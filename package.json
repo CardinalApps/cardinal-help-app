@@ -1,5 +1,6 @@
 {
-  "name": "nextjs",
+  "name": "cardinal-website-next",
+  "description": "The React verison of cardinalapps.xyz",
   "version": "0.1.0",
   "private": true,
   "scripts": {
