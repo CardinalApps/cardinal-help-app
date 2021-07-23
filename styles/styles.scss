@@ -1,0 +1,11 @@
+@import './reset.scss';
+@import './vars.scss';
+
+html, body {
+  height: 100vh;
+  font: 14px var(--base-font);
+}
+
+#__next {
+  height: 100%;
+} 
