@@ -33,3 +33,7 @@
   --text-color-4: #cecece;
   --border-color: #cecece;
 }
+
+[theme] {
+  color: var(--text-color);
+}
