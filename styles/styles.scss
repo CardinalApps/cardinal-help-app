@@ -1,11 +1,25 @@
 @import './reset.scss';
 @import './vars.scss';
+@import './mixins.scss';
 
 html, body {
   height: 100vh;
-  font: 14px var(--base-font);
 }
 
 #__next {
   height: 100%;
-} 
+}
+
+.wrap {
+  max-width: var(--wrapper);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 42px;
+  font-weight: 700;
+}

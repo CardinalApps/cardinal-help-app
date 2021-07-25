@@ -1,11 +1,18 @@
+import Link from 'next/link'
 import HelpApp from '../components/HelpApp/HelpApp'
+import PageView from '../components/PageView/PageView'
+import { i18n } from '../i18n/'
 
 export default function Home() {
   return (
-    <HelpApp theme="dark">
-      <main>
-        <h1>Cardinal Help home</h1>
-      </main>
-    </HelpApp>
+    <PageView>
+      <h1>{i18n('home.hero.title')}</h1>
+
+      {/* <Link href="/plugins/component-plugins">
+        <a>Go to plugins</a>
+      </Link> */}
+    </PageView>
   )
 }
+
+Home.Layout = HelpApp

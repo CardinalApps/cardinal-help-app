@@ -1,0 +1,7 @@
+.PrincipleHeader {
+  height: var(--header-height);
+  display: flex;
+  position: fixed;
+  left: var(--gutter);
+  top: var(--gutter);
+}

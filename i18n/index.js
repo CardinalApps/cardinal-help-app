@@ -1,8 +1,8 @@
-import { getI18nString, getI18nStrings } from './get'
+import { i18n, i18ns } from './get'
 
-const strings = getI18nStrings()
+const strings = i18ns()
 
 export {
   strings,
-  getI18nString,
+  i18n,
 }

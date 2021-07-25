@@ -1,4 +1,9 @@
-import helpStrings from './strings/help'
+import generalStrings from './strings/general'
+import helpHomeStrings from './strings/help-home'
+import seoStrings from './strings/seo'
+
+// cache strings, will be the main reference for all lookups at runtime
+let strings = {}
 
 /**
  * Get a localized string using a key.
@@ -10,8 +15,13 @@ import helpStrings from './strings/help'
  * exist, the key itself will be returned and a warning will be printed in the
  * console.
  */
-export function getI18nString(key, locale = 'en') {
-  if (!key in strings) {
+export function i18n(key, locale = 'en') {
+  if (!Object.keys(strings).length) {
+    console.log('Caching i18n strings')
+    strings = i18ns()
+  }
+
+  if (!(key in strings)) {
     console.warn('Invalid i18n key', key)
     return key
   }
@@ -20,12 +30,17 @@ export function getI18nString(key, locale = 'en') {
 }
 
 /**
- * Get all strings and all of their translations.
+ * Get all strings and all of their translations. Always pulls strings from the
+ * i18n files instead of using the cached strings.
  *
  * @returns {Object} - Returns an object whose keys are the string keys, and
  * values are the locale objects. Each locale object contains keys that are
  * locale slugs, associated with the string for that locale.
  */
-export function getI18nStrings() {
-  return {...helpStrings}
+export function i18ns() {
+  return {
+    ...generalStrings,
+    ...helpHomeStrings,
+    ...seoStrings
+    }
 }

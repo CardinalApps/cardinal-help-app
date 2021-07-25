@@ -1,9 +1,17 @@
-[theme="dark"] {
+[theme] {
+  color: var(--text-color);
+  font: 14px var(--base-font);
+
   --accent: rgb(234, 103, 103);
   --base-font: 'Open sans', sans-serif;
-  --accent-font: 'Yantramanav', sans-serif;
-  --header-height: 72px;
-  --fat: 100px;
+
+  --header-height: 50px;
+  --wrapper: calc(1100px + var(--gutter));
+  --gutter: 20px;
+
+  --border-radius-s: 4px;
+  --border-radius-m: 8px;
+  --border-radius-l: 12px;
 }
 
 [theme="dark"] {
@@ -32,8 +40,4 @@
   --text-color-3: #6b6b6b;
   --text-color-4: #cecece;
   --border-color: #cecece;
-}
-
-[theme] {
-  color: var(--text-color);
 }
