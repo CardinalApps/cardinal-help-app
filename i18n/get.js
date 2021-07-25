@@ -1,6 +1,5 @@
 import generalStrings from './strings/general'
 import helpHomeStrings from './strings/help-home'
-import seoStrings from './strings/seo'
 
 // cache strings, will be the main reference for all lookups at runtime
 let strings = {}
@@ -41,6 +40,5 @@ export function i18ns() {
   return {
     ...generalStrings,
     ...helpHomeStrings,
-    ...seoStrings
     }
 }

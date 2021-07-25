@@ -1,0 +1,27 @@
+.Icon {
+  padding: 14px;
+  border-radius: 100%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--active-transition-time);
+
+  --active-transition-time: 75ms;
+
+  &:active {
+    transform: scale(0.94);
+
+    .i {
+      transform: scale(0.92);
+    }
+  }
+}
+
+.i {
+  color: var(--text-color);
+  font-size: 23px;
+  transition: all var(--active-transition-time);
+}

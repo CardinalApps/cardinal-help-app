@@ -1,16 +1,17 @@
-import Link from 'next/link'
 import HelpApp from '../components/HelpApp/HelpApp'
 import PageView from '../components/PageView/PageView'
 import { i18n } from '../i18n/'
 
 export default function Home() {
-  return (
-    <PageView>
-      <h1>{i18n('home.hero.title')}</h1>
+  //const pages = await glob('pages/**/*.js', { cwd: __dirname })
 
-      {/* <Link href="/plugins/component-plugins">
-        <a>Go to plugins</a>
-      </Link> */}
+  //console.log(pages)
+
+  return (
+    <PageView
+      seoTitle={i18n('home.seo.title')}
+      seoDesc={i18n('home.seo.desc')}
+    >
     </PageView>
   )
 }

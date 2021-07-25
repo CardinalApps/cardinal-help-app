@@ -4,14 +4,23 @@
 
   --accent: rgb(234, 103, 103);
   --base-font: 'Open sans', sans-serif;
+  --accent-font: 'Yantramanav', sans-serif;
 
-  --header-height: 50px;
   --wrapper: calc(1100px + var(--gutter));
-  --gutter: 20px;
+  --gutter: 25px;
+
+  --sidebar-width-expanded: calc(100% - var(--gutter));
+  --sidebar-width-reading: 120px;
+  --sidebar-padding: 30px;
+  --sidebar-mode-transition-duration: 900ms;
 
   --border-radius-s: 4px;
-  --border-radius-m: 8px;
-  --border-radius-l: 12px;
+  --border-radius-m: 12px;
+  --border-radius-l: 20px;
+
+  --box-shadow: 0 0 6px 0 #1b1b1b;
+
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 [theme="dark"] {

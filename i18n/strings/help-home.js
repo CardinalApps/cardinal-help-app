@@ -1,8 +1,8 @@
 export default {
   'home.seo.title': {
-    en: `Get Help with Cardinal`,
+    en: `Cardinal Help`,
   },
-  'home.hero.title': {
-    en: `Get help using Cardinal apps`,
+  'home.seo.desc': {
+    en: 'Information about using Cardinal for users and developers. Includes help guides, FAQ, documentation, and everything else you need to know.',
   },
 }
