@@ -9,6 +9,10 @@ import styles from './MegaMenu.module.scss'
 export default function MegaMenu({ view }) {
   return (
     <div className={styles.MegaMenu}>
+      <MegaMenuSection section="cardinal-server" />
+      <MegaMenuSection section="cardinal-music" />
+      <MegaMenuSection section="general" />
+      <MegaMenuSection section="privacy" />
       <MegaMenuSection section="developer" />
     </div>
   )

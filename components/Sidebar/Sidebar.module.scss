@@ -1,22 +1,11 @@
 .Sidebar {
+  height: 100%;
   padding: var(--sidebar-padding);
-  position: fixed;
-  top: var(--gutter);
-  left: var(--gutter);
-  bottom: var(--gutter);
   border-radius: var(--border-radius-l);
   box-shadow: var(--box-shadow);
   background: var(--bg-3);
-  overflow: hidden;
-  transition: all var(--sidebar-mode-transition-duration) var(--ease-in-out-quart);
-
-  &[data-mode="expanded"] {
-    width: calc(100% - (var(--gutter) * 2));
-  }
-
-  &[data-mode="reading"] {
-    width: var(--sidebar-width-reading);
-  }
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .header {
@@ -48,4 +37,8 @@
   h1 {
     margin-bottom: 0;
   }
+}
+
+.icons {
+  margin-bottom: 40px;
 }

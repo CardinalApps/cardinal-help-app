@@ -11,36 +11,29 @@ import styles from './Sidebar.module.scss'
  */
 export default function Sidebar({ view }) {
   const [mode, setMode] = useState('expanded')
-  const mainTitleSpring = useSpring(
-    {
-      opacity: mode === 'expanded' ? 1 : 0,
-      transform: mode === 'expanded' ? 'translateX(0px)' : 'translateX(-20px)',
-      config: {
-        duration: 400,
-        easing: function quadInOut(t) {
-          return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2
-        }
-      }
-    }
-  )
-
-  /**
-   * Switches the mode between "expanded" and "reading".
-   */
-  function toggleMode() {
-    switch (mode) {
-      case 'expanded':
-        setMode('reading')
-        break
-
-      case 'reading':
-        setMode('expanded')
-        break
-    }
+  const springEasing = function quadInOut(t) {
+    return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2
   }
 
+  const sidebarSpring = useSpring({
+    width: mode === 'expanded' ? '100% ' : '15%',
+    config: {
+      duration: 400,
+      easing: springEasing
+    }}
+  )
+
+  const mainTitleSpring = useSpring({
+    opacity: mode === 'expanded' ? 1 : 0,
+    transform: mode === 'expanded' ? 'translateX(0px)' : 'translateX(-20px)',
+    config: {
+      duration: 200,
+      easing: springEasing
+    }}
+  )
+
   return (
-    <div className={styles.Sidebar} data-mode={mode}>
+    <animated.div className={styles.Sidebar} style={sidebarSpring} data-mode={mode}>
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href="/">
@@ -58,10 +51,10 @@ export default function Sidebar({ view }) {
       </header>
 
       <section className={styles.icons}>
-        <Icon classes="fas fa-th" onClick={toggleMode} />
+        <Icon classes="fas fa-th" onClick={() => {setMode(mode === 'expanded' ? 'reading' : 'expanded')}} />
       </section>
 
       <MegaMenu />
-    </div>
+    </animated.div>
   )
 }
