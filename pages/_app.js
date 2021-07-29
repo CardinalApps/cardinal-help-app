@@ -6,6 +6,8 @@ import '../styles/styles.scss'
 
 function _app({ Component, pageProps }) {
   const Layout = Component.Layout ? Component.Layout : React.Fragment
+
+  console.log('Rendering app with layout', Layout)
   
   return (
     <Layout>

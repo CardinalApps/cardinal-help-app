@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 import H2 from '../H2/H2'
 import DocumentLinkBlocks from '../DocumentLinkBlocks/DocumentLinkBlocks'
@@ -6,10 +5,6 @@ import { i18n } from '../../i18n/'
 import styles from './MegaMenuSection.module.scss'
 
 export default function MegaMenuSection({ section }) {
-  let pages = axios('/api/pages').then((aa) => {
-    console.log(aa)
-  })
-
   switch (section) {
     case 'cardinal-server':
       return (

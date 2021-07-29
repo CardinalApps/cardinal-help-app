@@ -21,7 +21,7 @@ export default {
     en: `About your privacy`,
   },
   'help.section.general.title': {
-    en: `About your privacy`,
+    en: `General Help`,
   },
   'help.section.developer.title': {
     en: `Developer Guides`,

@@ -1,10 +1,11 @@
 import { getPages } from '../../models/pages'
 
-export default (req, res) => {
-  console.log('received pages api req')
-  
-  getPages()
+/**
+ * Gets all pages for the app based on the folder structure on the disk.
+ */
+export default async (req, res) => {  
+  const pages = await getPages()
 
   res.statusCode = 200
-  res.json({ name: 'John Doe' })
+  res.json(pages)
 }

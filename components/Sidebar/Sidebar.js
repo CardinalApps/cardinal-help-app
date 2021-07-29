@@ -9,7 +9,7 @@ import styles from './Sidebar.module.scss'
 /**
  * The Sidebar component.
  */
-export default function Sidebar({ view }) {
+export default function Sidebar({ view, pages }) {
   const [mode, setMode] = useState('expanded')
   const springEasing = function quadInOut(t) {
     return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2
@@ -54,7 +54,7 @@ export default function Sidebar({ view }) {
         <Icon classes="fas fa-th" onClick={() => {setMode(mode === 'expanded' ? 'reading' : 'expanded')}} />
       </section>
 
-      <MegaMenu />
+      <MegaMenu pages={pages} />
     </animated.div>
   )
 }

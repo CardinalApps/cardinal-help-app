@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import HelpApp from '../../components/HelpApp/HelpApp'
-import PageView from '../../components/PageView/PageView'
+import HelpApp from '../../../components/HelpApp/HelpApp'
+import PageView from '../../../components/PageView/PageView'
 
 export default function ComponentPlugins() {
   return (
