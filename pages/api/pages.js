@@ -1,7 +1,7 @@
 import { getPages } from '../../models/pages'
 
 /**
- * Gets all pages for the app based on the folder structure on the disk.
+ * Returns all pages for the app based on the folder structure on the disk.
  */
 export default async (req, res) => {  
   const pages = await getPages()

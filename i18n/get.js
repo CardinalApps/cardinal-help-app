@@ -1,4 +1,5 @@
 import generalStrings from './strings/general'
+import menuStrings from './strings/menu'
 import helpHomeStrings from './strings/help-home'
 
 // cache strings, will be the main reference for all lookups at runtime
@@ -40,5 +41,6 @@ export function i18ns() {
   return {
     ...generalStrings,
     ...helpHomeStrings,
+    ...menuStrings,
     }
 }

@@ -1,3 +1,13 @@
 .MegaMenuSection {
-  margin-bottom: 60px;
+  margin-bottom: 45px;
 }
+
+.menuItems {
+    display: flex;
+    flex-wrap: wrap;
+
+    > div {
+      margin: 0 15px 15px 0;
+      flex-shrink: 0;
+    }
+  }

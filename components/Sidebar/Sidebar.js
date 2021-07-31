@@ -34,27 +34,29 @@ export default function Sidebar({ view, pages }) {
 
   return (
     <animated.div className={styles.Sidebar} style={sidebarSpring} data-mode={mode}>
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <Link href="/">
-            <a>
-              <img src="/bird.svg" id="logo" alt={i18n('header.logo.title')} />
-            </a>
-          </Link>
-        </div>
+      <div className={styles.inner}>
+        <header className={styles.header}>
+          <div className={styles.logo}>
+            <Link href="/">
+              <a>
+                <img src="/bird.svg" id="logo" alt={i18n('header.logo.title')} />
+              </a>
+            </Link>
+          </div>
 
-        <div className={styles.mainTitle}>
-          <animated.div style={mainTitleSpring}>
-            <h1>{i18n('sidebar.hero.title')}</h1>
-          </animated.div>
-        </div>
-      </header>
+          <div className={styles.mainTitle}>
+            <animated.div style={mainTitleSpring}>
+              <h1>{i18n('sidebar.hero.title')}</h1>
+            </animated.div>
+          </div>
+        </header>
 
-      <section className={styles.icons}>
-        <Icon classes="fas fa-th" onClick={() => {setMode(mode === 'expanded' ? 'reading' : 'expanded')}} />
-      </section>
+        <section className={styles.icons}>
+          <Icon classes="fas fa-th" onClick={() => {setMode(mode === 'expanded' ? 'reading' : 'expanded')}} />
+        </section>
 
-      <MegaMenu pages={pages} />
+        <MegaMenu pages={pages} />
+      </div>
     </animated.div>
   )
 }
