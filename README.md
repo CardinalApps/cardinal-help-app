@@ -1,34 +1,40 @@
 # cardinal-website-next
 
-The React version of cardinalapps.xyz. This project will go through 2 phases:
+The Help app for cardinalapps.xyz. This is a React app using Next.js that serves
+guides and documentation for Cardinal apps.
 
-1. Launch under the help.cardinalapps.xyz subdomain as the help/docs site.
-2. Convert the existing static website to React while migrating that code to
-   this project, then let this project take over the apex domain
-   cardinalapps.xyz.
+## Run the app
 
-## Getting Started
+Run the development server. You can use the includes VSCode launch config for
+server side breakpoint support, or use the following npm command:
 
-First, run the development server:
-
-```bash
+```
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the
-result.
+Then open localhost:3000.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello). This
-endpoint can be edited in `pages/api/hello.js`.
+## Pages
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are
-treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead
-of React pages.
+The routes use the Next.js file based routing system. The app extends that
+system by also using the structure of the `/pages` directory to automatically
+build all frontend pages.
 
-## Hosting
+### Page Configs
 
-The static site is hosted on Heroku. This project is hosted on Vercel.
-Eventually, everything will move to Vercel.
+The app implements custom page configs. Each page can be accompanied by a
+`.config.json` file with the same name as the page. Page configs are useful for
+setting static data that gets read at build time, like menu priority, SEO
+strings, icons, and keywords.
+
+For example:
+
+```
+// The Next.js route
+pages/developer/plugins/component-plugins.js
+
+// The associated config file
+pages/developer/plugins/component-plugins.config.json
+```
+
+The JSON object will be attached to the PageObject that the API returns.

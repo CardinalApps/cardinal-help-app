@@ -20,22 +20,28 @@ export default function MegaMenu({ pages }) {
         return (
           <MegaMenuSection 
             title={i18n(topLevelRoute.titleI18nKey)}
-            icon={topLevelRoute.icon}
-            iconType={topLevelRoute.iconType}
+            icon={topLevelRoute.config?.sectionIcon}
+            iconType={topLevelRoute.config?.sectionIconType}
             key={topLevelRoute.route} 
           >
             {/* Add the link for the level 1 route */}
             <PageLinkBlock
+              title={i18n('menu.section.root-link.title')}
+              icon={topLevelRoute.config?.icon}
+              iconType={topLevelRoute.config?.iconType}
               url={`${topLevelRoute.route}`}
             />
 
             {/* Add all the level 2+ routes that are children of the level 1 route */}
-            {pages.map((secondLevelRoute) => {
-              if (secondLevelRoute.level < 2 || secondLevelRoute.parts[0] !== topLevelRoute.parts[0]) return
+            {pages.map((childRoute) => {
+              if (childRoute.level < 2 || childRoute.parts[0] !== topLevelRoute.parts[0]) return
               return (
                 <PageLinkBlock
-                  url={secondLevelRoute.route}
-                  key={secondLevelRoute.route}
+                  title={i18n(childRoute.titleI18nKey)}
+                  url={childRoute.route}
+                  icon={childRoute.config?.icon}
+                  iconType={childRoute.config?.iconType}
+                  key={childRoute.route}
                 />
               )
             })}

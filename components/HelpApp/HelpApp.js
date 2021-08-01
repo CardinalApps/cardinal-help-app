@@ -20,7 +20,7 @@ export default function HelpApp(props) {
       <div className={styles.sidebarLayer}>
         <Sidebar pages={pages} />
       </div>
-      
+
       {props.children}
     </div>
   )

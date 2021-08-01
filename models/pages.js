@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import glob from 'glob'
 
 /**
@@ -11,11 +13,11 @@ export async function getPages() {
   // Only get the pages that are meant to be part of the Help app.
   // The order here will be the order shown in the frontend.
   let pages = await Promise.all([
-    doGlob('pages/cardinal-server/**/*'),
-    doGlob('pages/cardinal-music/**/*'),
-    doGlob('pages/general/**/*'),
-    doGlob('pages/privacy/**/*'),
-    doGlob('pages/developer/**/*'),
+    doGlob('pages/cardinal-server/**/*.js'),
+    doGlob('pages/cardinal-music/**/*.js'),
+    doGlob('pages/general/**/*.js'),
+    doGlob('pages/privacy/**/*.js'),
+    doGlob('pages/developer/**/*.js'),
   ])
 
   // Merge all glob arrays
@@ -25,7 +27,7 @@ export async function getPages() {
   pages = nextjsFilePathsToRoutes(pages)
 
   // Convert each route to a PageObject, which is what the frontend is expecting
-  pages = pages.map(page => PageObject(page))
+  pages = await Promise.all(pages.map(page => PageObject(page) ))
 
   console.log('Built these routes from the pages on disk', pages)
 
@@ -91,42 +93,22 @@ function nextjsFilePathsToRoutes(pages) {
  * 
  * @param {string} route
  */
-export function PageObject(route) {
+export async function PageObject(route) {
   // Split the route into non-empty strings
-  const parts = route.split('/').filter(part => !!part.length)
+  const parts = route.split(path.sep).filter(part => !!part.length)
   const level = parts.length
   const titleI18nKey = `page.${parts.join('.')}.title`
-  let icon = null
-  let iconType = null
+  let configFile = `${path.join('pages', ...parts)}.config.json`
+  const config = getPageConfig()
 
-  // The top level routes get special details
-  if (level === 1) {
-    switch(parts[0]) { 
-      case 'cardinal-server':
-        icon = '/icons/logo-server.svg'
-        iconType = 'image'
-        break
-
-      case 'cardinal-music':
-        icon = '/icons/logo-music.svg'
-        iconType = 'image'
-        break
-
-      case 'general':
-        icon = 'fas fa-box-open'
-        iconType = 'font'
-        break
-
-      case 'privacy':
-        icon = 'fas fa-mask'
-        iconType = 'font'
-        break
-
-      case 'developer':
-        icon = 'fas fa-code'
-        iconType = 'font'
-        break
+  function getPageConfig() {
+    // Top level routes omit the `/index.js` part, but we need it for the config file
+    if (level === 1) {
+      configFile = configFile.replace('.config.json', `${path.sep}index.config.json`)
     }
+
+    if (!fs.existsSync(configFile)) return null
+    return JSON.parse(fs.readFileSync(configFile, 'utf-8'))
   }
   
   return Object.freeze({
@@ -134,7 +116,7 @@ export function PageObject(route) {
     level,
     parts,
     titleI18nKey,
-    icon,
-    iconType
+    config,
+    configFile,
   })
 }
