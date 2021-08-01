@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-magic",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 600
 }

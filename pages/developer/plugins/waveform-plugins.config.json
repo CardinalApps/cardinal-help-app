@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-wave-square",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 500
 }

@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-copy",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 400
 }

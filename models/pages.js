@@ -4,15 +4,17 @@ import glob from 'glob'
 
 /**
  * Page structure for the app.
- * 
- * @returns {Array}
+ *
+ * @returns {Array} - Returns a single dimensional array of pages. Pages are
+ * sorted by section, then by priority. If no priority is set in the page's
+ * config, the sort order is undefined.
  */
 export async function getPages() {
   console.log('Reading pages on disk')
 
   // Only get the pages that are meant to be part of the Help app.
   // The order here will be the order shown in the frontend.
-  let pages = await Promise.all([
+  let sections = await Promise.all([
     doGlob('pages/cardinal-server/**/*.js'),
     doGlob('pages/cardinal-music/**/*.js'),
     doGlob('pages/general/**/*.js'),
@@ -20,15 +22,29 @@ export async function getPages() {
     doGlob('pages/developer/**/*.js'),
   ])
 
+  // Convert all pages in all section to PageObject instances
+  for (let i in sections) {
+    sections[i] = await Promise.all(sections[i].map(page => PageObject(page)))
+  }
+
+  // sections = sections.map((sectionPages) => {
+  //   // Remove all the dinctinct directory paths, they are the same as the
+  //   // `/index.js` path for that dir.
+  //   return sectionPages.filter(page => page.includes('.js'))
+  // })
+
+  // Sort each section by priority
+  for (let i in sections) {
+    sections[i] = sections[i].sort((a, b) => a.config.priority > b.config.priority ? 1 : -1)
+  }
+
+  console.log(sections)
+  
+
+
+
   // Merge all glob arrays
-  pages = [].concat(...pages)
-
-  // Remove all the directory paths, they are the same as the `/index.js` path
-  // for that dir.
-  pages = pages.filter(page => page.includes('.js'))
-
-  // Convert each route to a PageObject, which is what the frontend is expecting
-  pages = await Promise.all(pages.map(page => PageObject(page) ))
+  const pages = [].concat(...sections)
 
   console.log('Built these routes from the pages on disk', pages)
 

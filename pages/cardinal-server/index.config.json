@@ -1,6 +1,9 @@
 {
+  "sectionTitleI18nKey": "",
   "sectionIcon": "/icons/logo-server.svg",
   "sectionIconType": "image",
+  "title": "Cardinal Server Overview",
   "icon": "fas fa-hdd",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 100
 }

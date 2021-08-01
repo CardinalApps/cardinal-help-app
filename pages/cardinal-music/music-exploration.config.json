@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-compass",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 300
 }

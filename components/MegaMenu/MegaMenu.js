@@ -19,14 +19,14 @@ export default function MegaMenu({ pages }) {
         if (topLevelRoute.level !== 1) return
         return (
           <MegaMenuSection 
-            title={i18n(topLevelRoute.titleI18nKey)}
+            title={i18n(`menu.section.${topLevelRoute.parts[0]}.title`)}
             icon={topLevelRoute.config?.sectionIcon}
             iconType={topLevelRoute.config?.sectionIconType}
             key={topLevelRoute.route} 
           >
             {/* Add the link for the level 1 route */}
             <PageLinkBlock
-              title={i18n('menu.section.root-link.title')}
+              title={i18n(topLevelRoute.titleI18nKey)}
               icon={topLevelRoute.config?.icon}
               iconType={topLevelRoute.config?.iconType}
               url={`${topLevelRoute.route}`}

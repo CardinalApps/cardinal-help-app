@@ -2,5 +2,6 @@
   "sectionIcon": "fas fa-box-open",
   "sectionIconType": "font",
   "icon": "fas fa-star",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 100
 }

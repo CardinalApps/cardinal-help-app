@@ -1,4 +1,5 @@
 {
   "icon": "fab fa-docker",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 300
 }

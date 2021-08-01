@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-layer-group",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 500
 }

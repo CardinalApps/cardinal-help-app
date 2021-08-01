@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-window-maximize",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 200
 }

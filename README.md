@@ -20,21 +20,48 @@ The routes use the Next.js file based routing system. The app extends that
 system by also using the structure of the `/pages` directory to automatically
 build all frontend pages.
 
-### Page Configs
+## Page Configs
 
-The app implements custom page configs. Each page can be accompanied by a
-`.config.json` file with the same name as the page. Page configs are useful for
-setting static data that gets read at build time, like menu priority, SEO
-strings, icons, and keywords.
+Page configurations are `.json` files associated with a single route, which
+defines data that's made available to the app at build time. Page configs are
+useful for setting static data that gets read at build time, like menu priority,
+SEO strings, icons, and keywords.
 
-For example:
+Page configs supports named child routes, and directory index routes.
+
+### Named child route config file
+
+To create a route like `/developer/plugins/component-plugins`
 
 ```
 // The Next.js route
 pages/developer/plugins/component-plugins.js
 
-// The associated config file
+// The associated config file (optional)
 pages/developer/plugins/component-plugins.config.json
 ```
 
-The JSON object will be attached to the PageObject that the API returns.
+### Directory index config file
+
+Next.js also has directory index routes. In the [named child route
+example](#named-child-route-config-file), the route `/component-plugins` is a child of `/plugins`. If we wanted to serve just the `/plugins` route without having and explicelty named child route, use the following:
+
+```
+// The Next.js route
+pages/developer/plugins/index.js
+
+// The associated config file (optional)
+pages/developer/plugins/index.config.json
+```
+
+### Possible configs
+
+```json
+{
+  "sectionIcon": "/icons/logo-music.svg",
+  "sectionIconType": "image",
+  "icon": "fas fa-music",
+  "iconType": "font",
+  "priority": 100
+}
+```

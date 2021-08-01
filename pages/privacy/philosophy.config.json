@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-scroll",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 200
 }

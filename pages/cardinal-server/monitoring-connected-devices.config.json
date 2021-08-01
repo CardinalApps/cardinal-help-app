@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-wifi",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 500
 }

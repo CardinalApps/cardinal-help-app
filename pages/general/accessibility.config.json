@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-universal-access",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 600
 }

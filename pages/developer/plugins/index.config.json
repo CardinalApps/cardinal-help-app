@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-terminal",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 200
 }

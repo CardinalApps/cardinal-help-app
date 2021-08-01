@@ -3,7 +3,7 @@ export default {
    * Cardinal Server
    */
   'page.cardinal-server.title': {
-    en: 'Help Guides for Cardinal Server',
+    en: 'Introduction to Cardinal Server',
   },
   'page.cardinal-server.Docker.title': {
     en: 'Cardinal Server for Docker',
@@ -15,7 +15,7 @@ export default {
     en: 'Monitoring Connected Devices',
   },
   'page.cardinal-server.setup.title': {
-    en: 'Setup',
+    en: 'Installation & Setup',
   },
 
   /**

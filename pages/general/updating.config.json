@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-parachute-box",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 500
 }

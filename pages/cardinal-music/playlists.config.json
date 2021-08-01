@@ -1,4 +1,5 @@
 {
   "icon": "fas fa-list-alt",
-  "iconType": "font"
+  "iconType": "font",
+  "priority": 400
 }
