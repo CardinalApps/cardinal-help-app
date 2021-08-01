@@ -22,9 +22,10 @@ export async function getPages() {
 
   // Merge all glob arrays
   pages = [].concat(...pages)
-  
-  // Convert all file paths to routes
-  pages = nextjsFilePathsToRoutes(pages)
+
+  // Remove all the directory paths, they are the same as the `/index.js` path
+  // for that dir.
+  pages = pages.filter(page => page.includes('.js'))
 
   // Convert each route to a PageObject, which is what the frontend is expecting
   pages = await Promise.all(pages.map(page => PageObject(page) ))
@@ -61,58 +62,54 @@ function doGlob(pattern) {
  * depth levels. All routes begin with a leading slash and contain no file
  * extension.
  */
-function nextjsFilePathsToRoutes(pages) {
-  pages = pages.map((path) => {
-    // Replace the `/pages` prefix that comes with the Next.js structure with
-    // simply a leading slash
-    path = path.replace('pages/', '/')
+function pagePathToRoute(path) {
+  // Replace the `/pages` prefix that comes with the Next.js structure with
+  // simply a leading slash
+  path = path.replace('pages/', '/')
 
-    // Remove the .js from files
-    path = path.replace('.js', '')
+  // Remove the .js from files
+  path = path.replace('.js', '')
 
-    // Remove `/index` from routes. Next.js handles the routing for them, and we
-    // don't actually want the `/index` part to show in the URL
-    path = path.replace('/index', '')
-    
-    return path
-  })
-
-  // Dedupe the array because the globbers will return top level directories
-  // *and* their respective `index.js` files, which are really the same thing.
-  // For example, the globber will find return these two distinct paths:
-  //
-  // `/example`
-  // `/example/index.js`
-  //
-  // Both of the above will be reduced down to the same route.
-  return [...new Set(pages)]
+  // Remove `/index` from routes. Next.js handles the routing for them, and we
+  // don't actually want the `/index` part to show in the URL
+  path = path.replace('/index', '')
+  
+  return path
 }
 
 /**
  * Returns a new PageObject instance based on a route.
- * 
- * @param {string} route
+ *
+ * @param {string} pageFile - The path to the file in the `/pages` dir, as
+ * returned by the glob. Paths are relative to the project root.
  */
-export async function PageObject(route) {
-  // Split the route into non-empty strings
+export async function PageObject(pageFile) {
+  const route = pagePathToRoute(pageFile)
   const parts = route.split(path.sep).filter(part => !!part.length)
   const level = parts.length
   const titleI18nKey = `page.${parts.join('.')}.title`
-  let configFile = `${path.join('pages', ...parts)}.config.json`
+  const configFile = getPageConfigFilePath()
   const config = getPageConfig()
 
-  function getPageConfig() {
-    // Top level routes omit the `/index.js` part, but we need it for the config file
-    if (level === 1) {
-      configFile = configFile.replace('.config.json', `${path.sep}index.config.json`)
+  function getPageConfigFilePath() {
+    // The root route of a directory will be handled by `index.js`
+    if (pageFile.includes('index.js')) {
+      return pageFile.replace('index.js', `index.config.json`)
     }
+    // Non-root routes have unique file names
+    else {
+      return `${path.join('pages', ...parts)}.config.json`
+    }
+  }
 
+  function getPageConfig() {
     if (!fs.existsSync(configFile)) return null
     return JSON.parse(fs.readFileSync(configFile, 'utf-8'))
   }
   
   return Object.freeze({
     route,
+    pageFile,
     level,
     parts,
     titleI18nKey,
