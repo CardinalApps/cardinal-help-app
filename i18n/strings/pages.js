@@ -22,7 +22,7 @@ export default {
    * Cardinal Music
    */
   'page.cardinal-music.title': {
-    en: 'Help Guides for Cardinal Music',
+    en: 'Introduction to Cardinal Music',
   },
   'page.cardinal-music.genres.title': {
     en: 'Music Genres',
@@ -34,14 +34,14 @@ export default {
     en: 'Playlists',
   },
   'page.cardinal-music.setup.title': {
-    en: 'Setup',
+    en: 'Installation & Setup',
   },
 
   /**
    * General
    */
   'page.general.title': {
-    en: 'General Help Guides',
+    en: 'Welcome to Cardinal',
   },
   'page.general.accessibility.title': {
     en: 'Accessibility',
@@ -82,7 +82,7 @@ export default {
    * Developer
    */
   'page.developer.title': {
-    en: 'For Developers',
+    en: 'Writing Code for Cardinal',
   },
   'page.developer.plugins.title': {
     en: 'Introduction to Plugins',
