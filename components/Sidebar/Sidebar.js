@@ -1,5 +1,6 @@
+import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import MegaMenu from  '../MegaMenu/MegaMenu'
 import Icon from  '../Icon/Icon'
@@ -10,52 +11,73 @@ import styles from './Sidebar.module.scss'
  * The Sidebar component.
  */
 export default function Sidebar({ view, pages }) {
+  const router = useRouter()
   const [mode, setMode] = useState('expanded')
+
+  // Home page always sets mode to expanded
+  useEffect(() => {
+    console.log('Sidebar mode effect')
+    if (router.asPath === '/') {
+      setMode('expanded')
+    } else {
+      setMode('reading')
+    }
+  })
+
   const springEasing = function quadInOut(t) {
     return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2
   }
 
+  const percentToPx = (percent) => {
+
+  }
+
   const sidebarSpring = useSpring({
-    width: mode === 'expanded' ? '100% ' : '15%',
+    width: mode === 'expanded' ? '100%' : '10%',
     config: {
       duration: 400,
       easing: springEasing
     }}
   )
 
-  const mainTitleSpring = useSpring({
+  const expansionContentSpring = useSpring({
     opacity: mode === 'expanded' ? 1 : 0,
-    transform: mode === 'expanded' ? 'translateX(0px)' : 'translateX(-20px)',
+    transform: mode === 'expanded' ? 'scale(1)' : 'scale(0.93)',
+    delay: mode === 'expanded' ? 200 : 0,
     config: {
-      duration: 200,
+      duration: 150,
       easing: springEasing
     }}
   )
 
   return (
-    <animated.div className={styles.Sidebar} style={sidebarSpring} data-mode={mode}>
+    <animated.div className={styles.Sidebar} style={sidebarSpring}>
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <div className={styles.logo}>
-            <Link href="/">
-              <a>
-                <img src="/bird.svg" id="logo" alt={i18n('header.logo.title')} />
-              </a>
-            </Link>
-          </div>
 
+        <div className={styles.controlBar}>
+          <header className={styles.header}>
+            <div className={styles.logo}>
+              <Link href="/">
+                <a>
+                  <img src="/bird.svg" id="logo" alt={i18n('header.logo.title')} />
+                </a>
+              </Link>
+            </div>
+          </header>
+
+          <div className={styles.icons}>
+            <Icon classes="fas fa-th" onClick={() => {setMode(mode === 'expanded' ? 'reading' : 'expanded')}} />
+          </div>
+        </div>
+
+        <animated.div className={styles.expansion} style={expansionContentSpring}>
           <div className={styles.mainTitle}>
-            <animated.div style={mainTitleSpring}>
-              <h1>{i18n('sidebar.hero.title')}</h1>
-            </animated.div>
+            <h1>{i18n('sidebar.hero.title')}</h1>
           </div>
-        </header>
 
-        <section className={styles.icons}>
-          <Icon classes="fas fa-th" onClick={() => {setMode(mode === 'expanded' ? 'reading' : 'expanded')}} />
-        </section>
+          <MegaMenu pages={pages} />
+        </animated.div>
 
-        <MegaMenu pages={pages} />
       </div>
     </animated.div>
   )

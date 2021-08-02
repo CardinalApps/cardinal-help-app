@@ -1,12 +1,12 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import Sidebar from  '../Sidebar/Sidebar'
 import styles from './HelpApp.module.scss'
 
 export default function HelpApp(props) {
   const [theme, setTheme] = useState('dark')
   const [pages, setPages] = useState([])
-
+  
   // Get page structure from API and add them to the state
   useEffect(async () => {
     let pagesReq = await axios('/api/pages')

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { i18n } from '../../i18n/'
 import styles from './PageView.module.scss'
 
 /**

@@ -1,4 +1,6 @@
 .MegaMenu {
-  width: 80%;
-  margin: 0 10%;
+  
+  > div:last-of-type {
+    margin-bottom: 0;
+  }
 }

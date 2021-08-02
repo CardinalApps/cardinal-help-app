@@ -9,8 +9,7 @@
   --wrapper: calc(1100px + var(--gutter));
   --gutter: 25px;
 
-  --sidebar-width-expanded: calc(100% - var(--gutter));
-  --sidebar-width-reading: 120px;
+  --sidebar-width-reading: 80px;
   --sidebar-padding: 30px;
   --sidebar-mode-transition-duration: 900ms;
 

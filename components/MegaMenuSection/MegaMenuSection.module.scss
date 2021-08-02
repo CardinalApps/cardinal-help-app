@@ -3,11 +3,11 @@
 }
 
 .menuItems {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-    > div {
-      margin: 0 15px 15px 0;
-      flex-shrink: 0;
-    }
+  > div {
+    margin: 0 15px 15px 0;
+    flex-shrink: 0;
   }
+}
