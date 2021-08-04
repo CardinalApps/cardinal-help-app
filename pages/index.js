@@ -1,4 +1,3 @@
-import HelpApp from '../components/HelpApp/HelpApp'
 import PageView from '../components/PageView/PageView'
 import { i18n } from '../i18n/'
 
@@ -12,4 +11,4 @@ export default function Home() {
   )
 }
 
-Home.Layout = HelpApp
+Home.layout = 'full_menu'

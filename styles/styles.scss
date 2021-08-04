@@ -75,3 +75,15 @@ h2 {
     }
   }
 }
+
+.sidebarLayer {
+  width: 100%;
+  padding: var(--gutter);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+}

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import HelpApp from '../../components/HelpApp/HelpApp'
 import PageView from '../../components/PageView/PageView'
 
 export default function Page() {
@@ -14,4 +13,4 @@ export default function Page() {
   )
 }
 
-Page.Layout = HelpApp
+Page.layout = 'paper'

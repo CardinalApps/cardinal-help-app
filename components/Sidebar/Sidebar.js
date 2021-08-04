@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
@@ -10,19 +9,16 @@ import styles from './Sidebar.module.scss'
 /**
  * The Sidebar component.
  */
-export default function Sidebar({ view, pages }) {
-  const router = useRouter()
+export default function Sidebar({ appLayout, pages }) {
   const [mode, setMode] = useState('expanded')
 
-  // Home page always sets mode to expanded
   useEffect(() => {
-    console.log('Sidebar mode effect')
-    if (router.asPath === '/') {
+    if (appLayout === 'full_menu') {
       setMode('expanded')
-    } else {
+    } else if (appLayout === 'paper') {
       setMode('reading')
     }
-  })
+  }, [appLayout])
 
   const springEasing = function quadInOut(t) {
     return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2
