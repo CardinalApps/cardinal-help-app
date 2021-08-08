@@ -40,9 +40,9 @@ function _app({ Component, pageProps }) {
 
       {/* Persistent layout for the HelpApp itself and the sidebar */}
       <HelpApp theme={theme}>
-        <div className="sidebarLayer">
+        {/* <div className="sidebarLayer">
           <Sidebar pages={pages} appLayout={layout} />
-        </div>
+        </div> */}
 
         {/* The component of the page being viewed */}
         <Component {...pageProps} />

@@ -1,7 +1,4 @@
 [data-theme] {
-  color: var(--text-color);
-  font: 14px var(--base-font);
-
   --accent: rgb(234, 103, 103);
   --base-font: 'Open sans', sans-serif;
   --accent-font: 'Yantramanav', sans-serif;
@@ -13,12 +10,17 @@
   --sidebar-padding: 30px;
   --sidebar-mode-transition-duration: 900ms;
 
-  --border-radius-s: 4px;
+  --border-radius-xs: 4px;
+  --border-radius-s: 8px;
   --border-radius-m: 12px;
   --border-radius-l: 20px;
+  --border-radius-xl: 30px;
+  --border-radius-xxl: 40px;
 
   --scrollbar-color: #0e0e0e;
   --box-shadow: 0 0 9px 2px #1b1b1b;
+
+  --text-section-spacing: 30px;
 }
 
 [data-theme="dark"] {

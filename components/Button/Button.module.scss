@@ -1,0 +1,14 @@
+.Button {
+  margin: 0 10px 10px 0;
+  padding: 15px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text-color-2);
+  border-radius: var(--border-radius-xs);
+  background: var(--bg-4);
+
+  &:hover {
+    color: var(--accent);
+  }
+}

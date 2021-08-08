@@ -1,4 +1,7 @@
 .HelpApp {
   height: 100%;
+  color: var(--text-color);
+  font: 14px var(--base-font);
+  text-rendering: geometricPrecision;
   background: var(--bg);
 }

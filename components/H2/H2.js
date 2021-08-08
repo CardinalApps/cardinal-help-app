@@ -1,22 +1,9 @@
+import Icon from '../Icon/Icon'
+
 export default function H2({ text, icon, iconType }) {
-  switch (iconType) {
-    case 'image':
-      icon = <img src={icon} />
-      break
-
-    case 'font':
-      icon = <i className={icon} />
-      break
-
-    default:
-      icon = <></>
-  }
-
   return (
     <h2>
-      <span className="icon">
-        {icon}
-      </span>
+      {icon && <Icon type={iconType} icon={icon} />}
       {text}
     </h2>
   )

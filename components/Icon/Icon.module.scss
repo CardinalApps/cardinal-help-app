@@ -1,27 +1,113 @@
+// .Icon {
+//   padding: 14px;
+//   border-radius: 100%;
+//   border: 1px solid var(--border-color);
+//   background: var(--bg-2);
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+//   transition: all var(--active-transition-time);
+//   --active-transition-time: 75ms;
+
+//   &:active {
+//     transform: scale(0.94);
+
+//     .i {
+//       transform: scale(0.92);
+//     }
+//   }
+
+//   &.xl {
+//     width: 110px;
+//     height: 110px;
+//   }
+// }
+
+// .i {
+//   color: var(--text-color);
+//   font-size: 23px;
+//   transition: all var(--active-transition-time);
+// }
+
+
+
 .Icon {
-  padding: 14px;
-  border-radius: 100%;
-  border: 1px solid var(--border-color);
-  background: var(--bg-2);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--active-transition-time);
+  pointer-events: none;
+  user-select: none;
+  flex-shrink: 0;
 
-  --active-transition-time: 75ms;
+  &.xl {
 
-  &:active {
-    transform: scale(0.94);
+    .img {
+      width: 120px;
+      height: 120px;
+    }
 
     .i {
-      transform: scale(0.92);
+      width: 120px;
+      height: 120px;
+      font-size: 80px;
+      border-radius: var(--border-radius-xl);
+    }
+  }
+
+  &.l {
+
+    .img {
+      width: 90px;
+      height: 90px;
+    }
+
+    .i {
+      width: 90px;
+      height: 90px;
+      font-size: 57px;
+      border-radius: var(--border-radius-l);
+    }
+  }
+
+  &.m {
+
+    .img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .i {
+      width: 50px;
+      height: 50px;
+      font-size: 30px;
+      border-radius: var(--border-radius-m);
+    }
+  }
+
+  &.s {
+
+    .img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .i {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      border-radius: var(--border-radius-s);
     }
   }
 }
 
 .i {
-  color: var(--text-color);
-  font-size: 23px;
-  transition: all var(--active-transition-time);
+  margin-right: 15px;
+  color: var(--accent);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-4);
+}
+
+.img {
+  height: 50px;
+  margin-right: 15px;
 }

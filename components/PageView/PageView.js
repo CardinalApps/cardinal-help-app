@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import styles from './PageView.module.scss'
 
 /**
@@ -12,6 +13,8 @@ export default function PageView({
   favicon = '/favicon/favicon.ico',
   children
 }) {
+  const [layout, setLayout] = useState('')
+
   return (
     <>
       <Head>
@@ -21,7 +24,17 @@ export default function PageView({
       </Head>
 
       <main id="PageView" className={styles.PageView}>
-        {children}
+        <div className={`${styles.pillar} ${styles.left}`}>
+          <div className="ghost"></div>
+        </div>
+
+        <div className={`${styles.pillar} ${styles.center}`}>
+          <div className={styles.pageContent}>
+            {children}
+          </div>
+        </div>
+
+        <div className={`${styles.pillar} ${styles.right}`}></div>
       </main>
     </>
   )
