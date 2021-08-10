@@ -1,32 +1,42 @@
 @import '../styles/mixins.scss';
 
-.PageView {
+/**
+ * LayoutDoc defines styles for the entire app.
+ */
+.LayoutDoc {
   width: 100vw;
   height: 100vh;
+  font: 14px var(--base-font);
+  color: var(--text-color);
   display: flex;
   justify-content: space-evenly;
+  text-rendering: geometricPrecision;
+  background: var(--bg);
+}
+
+.pillar {
+  min-width: 100px;
 }
 
 .pillar.left {
-  //max-width: 200px;
+  display: flex;
   flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .pillar.center {
   height: 100%;
   display: flex;
   justify-content: center;
-  flex-grow: 1;
 }
 
 .pillar.right {
-  //max-width: 50px;
   flex-grow: 1;
 }
 
 .pageContent {
-  width: 100%;
-  max-width: 900px;
+  width: 800px;
   margin: 25px;
   padding: 40px 50px;
   overflow: auto;

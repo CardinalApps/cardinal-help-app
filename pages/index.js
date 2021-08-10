@@ -1,13 +1,13 @@
-import PageView from '../components/PageView/PageView'
+import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
 import { i18n } from '../i18n/'
 
 export default function Home() {
   return (
-    <PageView
+    <LayoutDoc
       seoTitle={i18n('home.seo.title')}
       seoDesc={i18n('home.seo.desc')}
     >
-    </PageView>
+    </LayoutDoc>
   )
 }
 

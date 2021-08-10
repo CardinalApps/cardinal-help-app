@@ -1,18 +1,30 @@
 import Link from 'next/link'
-import PageView from '../../components/PageView/PageView'
+import LayoutDoc from '../../components/LayoutDoc/LayoutDoc'
 import Icon from '../../components/Icon/Icon'
+import Button from '../../components/Button/Button'
 
 export default function Page() {
   return (
-    <PageView>
-      <div className="editable-content">
+    <>
+      <header>
+        <div className="cols">
+          <div className="align-content-bottom">
+            <Icon type="image" icon="/icons/logo-server.svg" size="xl" />
+          </div>
+          <div className="align-content-right align-center">
+            <div className="meta">
+              <p>Updated Aug 1, 2021</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="text">
         <h1>Introduction to Cardinal Server</h1>
 
-        <Link href="/">
-          <a>Go to home</a>
-        </Link>
+        <p></p>
       </div>
-    </PageView>
+    </>
   )
 }
 

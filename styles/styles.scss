@@ -108,7 +108,7 @@ h1 {
 
   p, ul, ol {
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: var(--text-section-spacing);
 
     a {
@@ -153,6 +153,11 @@ h1 {
 
   ol {
     list-style-type: lower-roman;
+  }
+
+  p {
+    line-height: 1.6em;
+    text-rendering: optimizeLegibility;
   }
 
   code {

@@ -35,6 +35,7 @@
   --text-color-3: #7e7e7e;
   --text-color-4: #525252;
   --border-color: #494949;
+  --color-opposite: white;
 }
 
 [data-theme="light"] {
@@ -49,4 +50,5 @@
   --text-color-3: #6b6b6b;
   --text-color-4: #cecece;
   --border-color: #cecece;
+  --color-opposite: black;
 }
