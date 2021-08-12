@@ -10,7 +10,7 @@ import styles from './Icon.module.scss'
  * @param {String} [size] - `xl`
  * @param {Function} [onClick]
  */
-export default function Icon({ classes, type, icon, size = 'm', onClick }) {
+export default function Icon({ classes = '', type, icon, size = 'm', onClick }) {
   if (!type) throw new Error('<Icon /> requires the type prop.')
   if (!icon) throw new Error('<Icon /> requires the icon prop.')
 

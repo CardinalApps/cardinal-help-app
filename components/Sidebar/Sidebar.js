@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
+import useMeasure from 'react-use-measure'
 import MegaMenu from  '../MegaMenu/MegaMenu'
 import { i18n } from '../../i18n/'
 import styles from './Sidebar.module.scss'
@@ -8,8 +9,12 @@ import styles from './Sidebar.module.scss'
 /**
  * The Sidebar component.
  */
-export default function Sidebar({ mode = 'reading', pages }) {
-  const [viewMode, setViewMode] = useState('expanded')
+export default function Sidebar({ setModeTo, pages }) {
+  const modes = ['expanded', 'reading']
+  const [mode, setMode] = useState('expanded')
+  const [ref, bounds] = useMeasure()
+
+  console.log(bounds)
 
   // useEffect(() => {
   //   if (mode === 'expanded') {
@@ -25,6 +30,23 @@ export default function Sidebar({ mode = 'reading', pages }) {
 
   const percentToPx = (percent) => {
 
+  }
+
+  /**
+   * Cycle through all possible modes that the sidebar supports.
+   */
+  const cycleMode = () => {
+    const currentIndex = modes.indexOf(mode)
+    const nextIndex = currentIndex + 1
+
+    // cycle back to the front
+    if (nextIndex > modes.length - 1) {
+      setMode(modes[0])
+    }
+    // go to next possible mode 
+    else {
+      setMode(modes[nextIndex])
+    }
   }
 
   // const sidebarSpring = useSpring({
@@ -46,7 +68,7 @@ export default function Sidebar({ mode = 'reading', pages }) {
   // )
 
   return (
-    <animated.div className={styles.Sidebar} data-mode={mode}>
+    <animated.div className={styles.Sidebar} data-mode={mode} ref={ref}>
       <div className={styles.inner}>
 
         <div className={styles.controlBar}>
@@ -63,11 +85,9 @@ export default function Sidebar({ mode = 'reading', pages }) {
           <button 
             className={styles.icon} 
             type="button"
+            onClick={cycleMode}
           >
-            <animated.i 
-              className="fas fa-th" 
-              onClick={() => {setViewMode(mode === 'expanded' ? 'reading' : 'expanded')}} 
-            />
+            <animated.i className="fas fa-th" />
           </button>
         </div>
 
