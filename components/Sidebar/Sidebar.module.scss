@@ -1,6 +1,7 @@
 @import '../styles/mixins.scss';
 
 .Sidebar {
+  position: relative;
 
   &[data-mode="reading"] {
     width: var(--sidebar-width-reading);
@@ -17,20 +18,19 @@
   }
 }
 
+// Position is set by spring
 .inner {
+  min-width: var(--sidebar-width-reading);
   position: fixed;
-  top: var(--gutter);
-  left: var(--gutter);
-  right: var(--gutter);
-  bottom: var(--gutter);
   display: flex;
   overflow: hidden;
+  will-change: top, left, right, bottom;
   @include hovercraft(var(--border-radius-m));
 }
 
 .controlBar {
   width: var(--sidebar-width-reading);
-  padding: 15px;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -45,6 +45,8 @@
   padding: 8px 0 0 40px;
   overflow-x: hidden;
   overflow-y: auto;
+
+  display: none;
 }
 
 .header {
