@@ -1,4 +1,3 @@
-import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
 import { i18n } from '../i18n/'
 
 export default function Home() {
@@ -11,4 +10,4 @@ export default function Home() {
   )
 }
 
-Home.layout = 'full_menu'
+Home.SidebarMode = 'expanded'

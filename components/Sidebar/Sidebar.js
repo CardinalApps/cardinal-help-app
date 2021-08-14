@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import { useSpring, useTrail, animated, config } from 'react-spring'
 import useMeasure from 'react-use-measure'
 import MegaMenu from  '../MegaMenu/MegaMenu'
@@ -7,46 +6,29 @@ import { i18n } from '../../i18n/'
 import styles from './Sidebar.module.scss'
 
 /**
- * The Sidebar component. Defaults to 'expanded' mode, which is also the home
- * page of the app.
+ * The Sidebar component can exist in two modes:
+ *
+ * - `reading`: When the sidebar is collapsed and floating beside the main
+ *   content.
+ * - `expanded`: When the sidebar is open, showing the mega menu.
+ *
+ * The sidebar uses a few springs to handle the animation of the mode change.
  */
-export default function Sidebar({ setModeTo, pages }) {
-  // `window` is not defined when building server side, some code should not run
+export default function Sidebar({ pages, mode, cycleMode, animate }) {
   const isSSR = typeof window === 'undefined'
-  const modes = ['expanded', 'reading']
-  const [mode, setMode] = useState('expanded')
   const [ref, bounds] = useMeasure()
 
-  // useEffect(() => {
-  //   if (mode === 'expanded') {
-  //     setViewMode('expanded')
-  //   } else if (mode === 'paper') {
-  //     setViewMode('reading')
-  //   }
-  // }, [mode])
-
   /**
-   * Cycle through all possible modes that the sidebar supports.
-   */
-  const cycleMode = () => {
-    const currentIndex = modes.indexOf(mode)
-    const nextIndex = currentIndex + 1
-
-    // cycle back to the front
-    if (nextIndex > modes.length - 1) {
-      setMode(modes[0])
-    }
-    // go to next possible mode 
-    else {
-      setMode(modes[nextIndex])
-    }
-  }
-
-  /**
-   * Calcualates the position of the inner div, which uses position:fixed to
-   * take up the full screen when in "expanded" mode. When it needs to shrink
-   * back into the sidebar, this function can be used to calculate the position
-   * it needs to be in.
+   * What the user sees as the "sidebar" is actually the .inner div. This inner
+   * div uses position:fixed, so that in `expanded` mode it can easily escape
+   * the Sidebar parent element and use up the whole viewport.
+   *
+   * Since springs cannot handle going from position:fixed to position:absolute,
+   * this function calculates the values that we need for .inner to "collapse"
+   * back into the Sidebar without changing from position:fixed.
+   *
+   * Calculating the position is made easy by just using the parent Sidebar
+   * position.
    *
    * @param {string} side - `top`', `left`, `right`, `bottom`
    * @returns {string} - Returns a string like '100px'.
@@ -82,7 +64,7 @@ export default function Sidebar({ setModeTo, pages }) {
     left: mode === 'reading' ? positionInSidebar('left') : '25px',
     right: mode === 'reading' ? positionInSidebar('right') : '25px',
     bottom: mode === 'reading' ? positionInSidebar('bottom') : '25px',
-    config: config.default
+    config: animate ? config.default : { duration: 0 }
   })
 
   /**
@@ -93,21 +75,22 @@ export default function Sidebar({ setModeTo, pages }) {
     left: mode === 'reading' ? '0px' : '10px',
     right: mode === 'reading' ? '0px' : '10px',
     bottom: mode === 'reading' ? '0px' : '20px',
-    config: { mass: 4, tension: 400, friction: 20 }
+    config: animate ? { mass: 4, tension: 220, friction: 18 } : { duration: 0 }
   })
 
   /**
-   * Spring for the content of the sidebar when it's expanded.
+   * Spring for the content of the sidebar that is only visible when the sidebar
+   * is expanded.
    */
   const expansionContentSpring = useSpring({
     opacity: mode === 'reading' ? 0 : 1,
     transform: mode === 'reading' ? 'scale(0.93)' : 'scale(1)',
-    delay: mode === 'reading' ? 0 : 200,
-    config: config.wobbly
+    delay: mode === 'reading' || !animate ? 0 : 300,
+    config: animate ? config.wobbly : { duration: 0 }
   })
 
   return (
-    <div className={styles.Sidebar} data-mode={mode} ref={ref}>
+    <div className={styles.Sidebar} ref={ref}>
       <animated.div 
         className={`${styles.inner}`}
         style={innerSpring}>

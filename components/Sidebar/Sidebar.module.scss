@@ -1,24 +1,12 @@
 @import '../styles/mixins.scss';
 
 .Sidebar {
+  width: var(--sidebar-width-reading);
+  height: 300px;
   position: relative;
-
-  &[data-mode="reading"] {
-    width: var(--sidebar-width-reading);
-    height: 300px;
-  }
-
-  &[data-mode="expanded"] {
-    width: var(--sidebar-width-reading);
-    height: 300px;
-
-    .inner {
-      
-    }
-  }
 }
 
-// Position is set by spring
+// top, left, right, bottom are all set by the spring
 .inner {
   min-width: var(--sidebar-width-reading);
   position: fixed;
@@ -58,6 +46,7 @@
     display: flex;
     flex-shrink: 0;
     position: relative;
+    will-change: top, left, right, bottom;
 
     a {
       display: block;
@@ -94,6 +83,7 @@
   font-size: 20px;
   text-align: center;
   cursor: pointer;
+  will-change: top, left, right, bottom;
   background: var(--bg-4);
   -webkit-appearance: none;
 }

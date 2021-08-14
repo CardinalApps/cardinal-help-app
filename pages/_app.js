@@ -8,7 +8,10 @@ import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
 import '../styles/styles.scss'
 
 function _app({ Component, pageProps }) {
+  const pageWantsSidebarMode = Component?.SidebarMode ? Component.SidebarMode : 'reading'
   const [pages, setPages] = useState([])
+
+  console.log('pageWantsSidebarMode', pageWantsSidebarMode)
 
   // Fetch pages from API on app mount
   useEffect(async () => {
@@ -28,7 +31,11 @@ function _app({ Component, pageProps }) {
 
       {/* Persistent layout for the HelpApp itself and the sidebar */}
       <HelpApp>
-        <LayoutDoc pages={pages} theme="dark">
+        <LayoutDoc
+          pages={pages}
+          theme="dark"
+          pageWantsSidebarMode={pageWantsSidebarMode}
+        >
           {/* The component of the page being viewed */}
           <Component {...pageProps} />
         </LayoutDoc>

@@ -6,6 +6,7 @@
   overflow: hidden;
   border-radius: var(--border-radius-l);
   background: var(--bg);
+  will-change: transform;
 
   a {
     padding: 10px;

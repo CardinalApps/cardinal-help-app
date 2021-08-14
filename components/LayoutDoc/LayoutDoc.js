@@ -3,30 +3,59 @@ import { useState, useEffect } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './LayoutDoc.module.scss'
 
+let sidebarShouldAnimate = true
+
 /**
- * The LayoutDoc component contains the contents of a single page in `/pages`.
- * Each Next.js page uses this as its top level component, and its purpose is to
- * define the <head> contents and the main content of the page.
+ * The LayoutDoc component sets the layout of the app itself. It accepts the
+ * main content of the page we are currently viewing as children of this
+ * component.
  */
 export default function LayoutDoc({
   seoTitle = 'Cardinal Apps',
   seoDesc = 'Help page for Cardinal Apps',
   favicon = '/favicon/favicon.ico',
   pages = [],
+  pageWantsSidebarMode,
   children
 }) {
-  //const desiredPageLayout = Component.layout ? Component.layout : 'full_menu'
-  //const [layout, setLayout] = useState('full_menu')
+  const modes = ['expanded', 'reading']
+  const [mode, setMode] = useState('expanded')
   const [theme, setTheme] = useState('dark')
-  
-  // // Each page can choose a layout
-  // useEffect(() => {
-  //   if (desiredPageLayout !== layout) {
-  //     setLayout(desiredPageLayout)
-  //   }
-  // })
+  const [isFirstRender, setIsFirstRender] = useState(true)
 
-  //console.log('Rendering app with layout', layout)
+  /**
+   * Cycle through all possible modes that the sidebar supports.
+   */
+  const cycleMode = () => {
+    const currentIndex = modes.indexOf(mode)
+    const nextIndex = currentIndex + 1
+
+    // cycle back to the front
+    if (nextIndex > modes.length - 1) {
+      setMode(modes[0])
+    }
+    // go to next possible mode 
+    else {
+      setMode(modes[nextIndex])
+    }
+  }
+  
+  /**
+   * Allow each page to request a sidebar mode that will only be applied on the
+   * first render.
+   */
+  useEffect(() => {
+    if (isFirstRender && pageWantsSidebarMode !== mode) {
+      setIsFirstRender(false)
+      sidebarShouldAnimate = false
+      setMode(pageWantsSidebarMode)
+    }
+
+    // Animations should always run, except on the first render
+    if (!isFirstRender) {
+      sidebarShouldAnimate = true
+    }
+  })
 
   return (
     <div className={styles.LayoutDoc} data-theme={theme}>
@@ -38,7 +67,12 @@ export default function LayoutDoc({
 
       <div id="LayoutDoc" className={styles.LayoutDoc}>
         <div className={`${styles.pillar} ${styles.left}`}>
-          <Sidebar pages={pages} />
+          <Sidebar
+            pages={pages}
+            mode={mode}
+            cycleMode={cycleMode}
+            animate={sidebarShouldAnimate}
+          />
         </div>
 
         <div className={`${styles.pillar} ${styles.center}`}>
