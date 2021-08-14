@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Icon from '../../components/Icon/Icon'
-import Button from '../../components/Button/Button'
+import Icon from '../../../components/Icon/Icon'
+import Button from '../../../components/Button/Button'
 
 export default function Page() {
   return (
