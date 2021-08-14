@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, useTrail, animated, config } from 'react-spring'
 import useMeasure from 'react-use-measure'
 import MegaMenu from  '../MegaMenu/MegaMenu'
 import { i18n } from '../../i18n/'
@@ -74,33 +74,37 @@ export default function Sidebar({ setModeTo, pages }) {
     return `${Math.round(px)}px`
   }
 
-  function quadInOut(t) {
-    return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2
-  }
-
   /**
-   * Spring for the .inner element.
+   * Spring for .inner.
    */
   const innerSpring = useSpring({
     top: mode === 'reading' ? positionInSidebar('top') : '25px',
     left: mode === 'reading' ? positionInSidebar('left') : '25px',
     right: mode === 'reading' ? positionInSidebar('right') : '25px',
     bottom: mode === 'reading' ? positionInSidebar('bottom') : '25px',
-    config: {
-      duration: 0,
-      //easing: quadInOut
-    }}
-  )
+    config: config.default
+  })
 
-  // const expansionContentSpring = useSpring({
-  //   opacity: mode === 'expanded' ? 1 : 0,
-  //   transform: mode === 'expanded' ? 'scale(1)' : 'scale(0.93)',
-  //   delay: mode === 'expanded' ? 200 : 0,
-  //   config: {
-  //     duration: 150,
-  //     easing: quadInOut
-  //   }}
-  // )
+  /**
+   * Create a trail of springs for the items in the .controlBar.
+   */
+  const controlBarItemsTrail = useTrail(2, {
+    top: mode === 'reading' ? '0px' : '20px',
+    left: mode === 'reading' ? '0px' : '10px',
+    right: mode === 'reading' ? '0px' : '10px',
+    bottom: mode === 'reading' ? '0px' : '20px',
+    config: { mass: 4, tension: 400, friction: 20 }
+  })
+
+  /**
+   * Spring for the content of the sidebar when it's expanded.
+   */
+  const expansionContentSpring = useSpring({
+    opacity: mode === 'reading' ? 0 : 1,
+    transform: mode === 'reading' ? 'scale(0.93)' : 'scale(1)',
+    delay: mode === 'reading' ? 0 : 200,
+    config: config.wobbly
+  })
 
   return (
     <div className={styles.Sidebar} data-mode={mode} ref={ref}>
@@ -108,27 +112,28 @@ export default function Sidebar({ setModeTo, pages }) {
         className={`${styles.inner}`}
         style={innerSpring}>
 
-        <div className={styles.controlBar}>
+        <animated.div className={styles.controlBar}>
           <header className={styles.header}>
-            <div className={styles.logo}>
+            <animated.div className={styles.logo} style={controlBarItemsTrail[0]}>
               <Link href="/">
                 <a>
                   <img src="/bird.svg" id="logo" alt={i18n('header.logo.title')} />
                 </a>
               </Link>
-            </div>
+            </animated.div>
           </header>
 
-          <button 
+          <animated.button 
             className={styles.icon} 
+            style={controlBarItemsTrail[1]}
             type="button"
             onClick={cycleMode}
           >
             <animated.i className="fas fa-th" />
-          </button>
-        </div>
+          </animated.button>
+        </animated.div>
 
-        <animated.div className={styles.expansion}>
+        <animated.div className={styles.expansion} style={expansionContentSpring}>
           <div className={styles.mainTitle}>
             <h1>{i18n('sidebar.hero.title')}</h1>
           </div>

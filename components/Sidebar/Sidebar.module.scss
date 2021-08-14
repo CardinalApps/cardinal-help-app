@@ -30,7 +30,7 @@
 
 .controlBar {
   width: var(--sidebar-width-reading);
-  padding: 0;
+  padding: 20px 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -45,8 +45,6 @@
   padding: 8px 0 0 40px;
   overflow-x: hidden;
   overflow-y: auto;
-
-  display: none;
 }
 
 .header {
@@ -59,6 +57,7 @@
     width: 100%;
     display: flex;
     flex-shrink: 0;
+    position: relative;
 
     a {
       display: block;
@@ -88,6 +87,7 @@
   color: var(--color-opposite);
   text-align: center;
   border: none;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
