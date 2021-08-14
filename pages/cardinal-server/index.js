@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import LayoutDoc from '../../components/LayoutDoc/LayoutDoc'
 import Icon from '../../components/Icon/Icon'
 import Button from '../../components/Button/Button'
 
@@ -9,7 +8,7 @@ export default function Page() {
       <header>
         <div className="cols">
           <div className="align-content-bottom">
-            <Icon type="image" icon="/icons/logo-server.svg" size="xl" />
+            <Icon type="image" icon="/icons/logo-server.svg" size="l" />
           </div>
           <div className="align-content-right align-center">
             <div className="meta">
@@ -27,5 +26,3 @@ export default function Page() {
     </>
   )
 }
-
-Page.layout = 'paper'
