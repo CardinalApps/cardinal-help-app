@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
 
+const PATH_PREFIX = process.env.NODE_ENV === 'production' ? '' : 'pages/'
+
 /**
  * Page structure for the app.
  *
@@ -15,11 +17,11 @@ export async function getPages() {
   // Only get the pages that are meant to be part of the Help app.
   // The order here will be the order shown in the frontend.
   let sections = await Promise.all([
-    doGlob('pages/cardinal-server/**/*.js'),
-    doGlob('pages/cardinal-music/**/*.js'),
-    doGlob('pages/general/**/*.js'),
-    doGlob('pages/privacy/**/*.js'),
-    doGlob('pages/developer/**/*.js'),
+    doGlob(`${PATH_PREFIX}/cardinal-server/**/*.js`),
+    doGlob(`${PATH_PREFIX}/cardinal-music/**/*.js`),
+    doGlob(`${PATH_PREFIX}/general/**/*.js`),
+    doGlob(`${PATH_PREFIX}/privacy/**/*.js`),
+    doGlob(`${PATH_PREFIX}/developer/**/*.js`),
   ])
 
   // Convert all pages in all section to PageObject instances
