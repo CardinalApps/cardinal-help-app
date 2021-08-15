@@ -2,8 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
 
-const PATH_PREFIX = process.env.NODE_ENV === 'production' ? '' : 'pages/'
-
 /**
  * Page structure for the app.
  *
@@ -17,6 +15,7 @@ export async function getPages() {
   // Only get the pages that are meant to be part of the Help app.
   // The order here will be the order shown in the frontend.
   let sections = await Promise.all([
+    doGlob(`pages/index.js`), // special case for the home page
     doGlob(`pages/cardinal-server/**/*.js`),
     doGlob(`pages/cardinal-music/**/*.js`),
     doGlob(`pages/general/**/*.js`),
@@ -82,7 +81,7 @@ function doGlob(pattern) {
  */
 function pagePathToRoute(path) {
   // Replace the `/pages` prefix that comes with the Next.js structure with
-  // simply a leading slash
+  // just a leading slash
   path = path.replace('pages/', '/')
 
   // Remove the .js from files
@@ -91,6 +90,12 @@ function pagePathToRoute(path) {
   // Remove `/index` from routes. Next.js handles the routing for them, and we
   // don't actually want the `/index` part to show in the URL
   path = path.replace('/index', '')
+
+  // Handle the case where trimming the string gave us an empty string, this is
+  // actually the home page.
+  if (path === '') {
+    path = '/'
+  }
   
   return path
 }
