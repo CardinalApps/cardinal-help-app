@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './LayoutDoc.module.scss'
 
-let sidebarShouldAnimate = true
+// The app will start with animations disabled, so that the initial render feels
+// static and fast.
+let animations = false
+let defaultPageMode
 
 /**
  * The LayoutDoc component sets the layout of the app itself. It accepts the
@@ -15,13 +18,31 @@ export default function LayoutDoc({
   seoDesc = 'Help page for Cardinal Apps',
   favicon = '/favicon/favicon.ico',
   pages = [],
-  pageWantsSidebarMode,
+  sidebarModeConfig,
   children
 }) {
+  // All possible modes that the sidebar cycles through
   const modes = ['expanded', 'reading']
-  const [mode, setMode] = useState('expanded')
+
+  // mode is the current sidebar mode, controlled by the user, possibly
+  // different from the default pageMode
+  const [mode, setMode] = useState(modes[0])
+
+  // Color theme, user controlled
   const [theme, setTheme] = useState('dark')
-  const [isFirstRender, setIsFirstRender] = useState(true)
+  
+  if (sidebarModeConfig !== defaultPageMode) {
+    setMode(sidebarModeConfig)
+    defaultPageMode = sidebarModeConfig
+  }
+
+  /**
+   * Enable animations after the initial render.
+   */
+  useEffect(() => {
+    console.log('Initial load has rendered - now enabling animations')
+    animations = true
+  }, [])
 
   /**
    * Cycle through all possible modes that the sidebar supports.
@@ -39,23 +60,6 @@ export default function LayoutDoc({
       setMode(modes[nextIndex])
     }
   }
-  
-  /**
-   * Allow each page to request a sidebar mode that will only be applied on the
-   * first render.
-   */
-  useEffect(() => {
-    if (isFirstRender && pageWantsSidebarMode !== mode) {
-      setIsFirstRender(false)
-      sidebarShouldAnimate = false
-      setMode(pageWantsSidebarMode)
-    }
-
-    // Animations should always run, except on the first render
-    if (!isFirstRender) {
-      sidebarShouldAnimate = true
-    }
-  })
 
   return (
     <div className={styles.LayoutDoc} data-theme={theme}>
@@ -71,7 +75,7 @@ export default function LayoutDoc({
             pages={pages}
             mode={mode}
             cycleMode={cycleMode}
-            animate={sidebarShouldAnimate}
+            animate={animations}
           />
         </div>
 

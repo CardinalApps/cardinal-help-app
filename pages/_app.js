@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import HelpApp from '../components/HelpApp/HelpApp'
 import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
+import pagesCache from '../cache/pages.json'
 
 // Global styles
 import '../styles/styles.scss'
@@ -11,7 +12,7 @@ function _app({ Component, pageProps }) {
   const pageWantsSidebarMode = Component?.SidebarMode ? Component.SidebarMode : 'reading'
   const [pages, setPages] = useState([])
 
-  console.log('pageWantsSidebarMode', pageWantsSidebarMode)
+  console.log('page json', pagesCache)
 
   // Fetch pages from API on app mount
   useEffect(async () => {
@@ -21,6 +22,7 @@ function _app({ Component, pageProps }) {
   }, [])
 
   console.log('Rendering HelpApp with pages', pages)
+  console.log('pageWantsSidebarMode', pageWantsSidebarMode)
   
   return (
     <>

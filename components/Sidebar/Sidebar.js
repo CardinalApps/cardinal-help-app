@@ -18,6 +18,8 @@ export default function Sidebar({ pages, mode, cycleMode, animate }) {
   const isSSR = typeof window === 'undefined'
   const [ref, bounds] = useMeasure()
 
+  console.log('Setting sidebar mode to', mode)
+
   /**
    * What the user sees as the "sidebar" is actually the .inner div. This inner
    * div uses position:fixed, so that in `expanded` mode it can easily escape
