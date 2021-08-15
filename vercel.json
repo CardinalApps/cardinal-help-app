@@ -1,10 +1,7 @@
 {
   "functions": {
     "src/pages/**/*": {
-      "includeFiles": "pages/*"
-    },
-    "src/models/**/*": {
-      "includeFiles": "pages/**/*"
+      "includeFiles": "models/*"
     }
   }
 }
