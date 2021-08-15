@@ -1,25 +1,20 @@
 import Head from 'next/head'
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 import HelpApp from '../components/HelpApp/HelpApp'
 import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
-import pagesCache from '../cache/pages.json'
+import cachedPages from '../cache/pages.json'
 
 // Global styles
 import '../styles/styles.scss'
 
 function _app({ Component, pageProps }) {
   const pageWantsSidebarMode = Component?.SidebarMode ? Component.SidebarMode : 'reading'
-  const [pages, setPages] = useState([])
+  const router = useRouter()
+  const [pages, setPages] = useState(cachedPages || [])
+  const currentPage = pages.filter(page => page.route === router.pathname)
 
-  console.log('page json', pagesCache)
-
-  // Fetch pages from API on app mount
-  useEffect(async () => {
-    console.log('Fetching pages from API')
-    let pagesReq = await axios('/api/pages')
-    setPages(pagesReq.data)
-  }, [])
+  console.log('currentPage', currentPage)
 
   console.log('Rendering HelpApp with pages', pages)
   console.log('pageWantsSidebarMode', pageWantsSidebarMode)

@@ -16,52 +16,54 @@ Then open localhost:3000.
 
 ## Pages
 
-The routes use the Next.js file based routing system. The app extends that
-system by also using the structure of the `/pages` directory to automatically
-build all frontend pages.
+The routes use the Next.js file based routing system. The frontend mega menu is
+automatically built based on the file structure of the pages on the disk.
 
 ## Page Configs
 
 Page configurations are `.json` files associated with a single route, which
-defines data that's made available to the app at build time. Page configs are
-useful for setting static data that gets read at build time, like menu priority,
-SEO strings, icons, and keywords.
+defines data that's made available to the app. Page configs are useful for
+defining static data that gets read at build time, like menu priority, SEO
+strings, icons, and keywords. Anything that would be set in an admin panel.
 
-Page configs supports named child routes, and directory index routes.
+To create a page config, first create your Next.js page in `/pages`, then create
+another file with the same name, that ends in `.config.json`.
 
-### Named child route config file
-
-To create a route like `/developer/plugins/component-plugins`
-
-```
-// The Next.js route
-pages/developer/plugins/component-plugins.js
-
-// The associated config file (optional)
-pages/developer/plugins/component-plugins.config.json
-```
-
-### Directory index config file
-
-Next.js also has directory index routes. In the [named child route
-example](#named-child-route-config-file), the route `/component-plugins` is a child of `/plugins`. If we wanted to serve just the `/plugins` route without having and explicelty named child route, use the following:
-
-```
-// The Next.js route
-pages/developer/plugins/index.js
-
-// The associated config file (optional)
-pages/developer/plugins/index.config.json
-```
-
-### Possible configs
+### Possible page configs
 
 ```json
 {
-  "sectionIcon": "/icons/logo-music.svg",
+  // Top level pages only: `image` or `font`
   "sectionIconType": "image",
-  "icon": "fas fa-music",
+
+  // Top level pages only: path to an image, or FontAwesome classes
+  "sectionIcon": "/icons/logo-music.svg", 
+
+  // `image` or `font`
   "iconType": "font",
-  "priority": 100
+
+  // Path to an image, or FontAwsome classes
+  "icon": "fas fa-music",
+
+  // Page order priority
+  "priority": 100,
+
+  // Default sidebar mode for this page. If omitted, the app will use `reading` mode.
+  "sidebarMode": "expanded"
 }
 ```
+
+## Scripts
+
+#### `npm run models/pages`
+
+Use `npm run models/pages` **on dev** to execute the page model and cache the
+output in `cache/pages.json`. This script can only be run on dev, because Vercel
+does not keep the `/pages` directory in prod (everything is webpacked, Node's
+`fs` is not reliable in prod).
+
+## `cache` Directory
+
+The top-level `cache` directory contains cache that is created by the scripts.
+This directory is not related to the internal Next.js cache, and we should
+ensure that `cache` gets pushed to staging and prod.
