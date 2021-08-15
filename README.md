@@ -62,6 +62,9 @@ output in `cache/pages.json`. This script can only be run on dev, because Vercel
 does not keep the `/pages` directory in prod (everything is webpacked, Node's
 `fs` is not reliable in prod).
 
+Whenever you make a change to a page config, add a page, or delete a page, you
+must run `npm run models/pages`.
+
 ## `cache` Directory
 
 The top-level `cache` directory contains cache that is created by the scripts.

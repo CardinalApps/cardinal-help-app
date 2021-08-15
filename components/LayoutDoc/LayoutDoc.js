@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './LayoutDoc.module.scss'
 
-// The app will start with animations disabled, so that the initial render feels
-// static and fast.
+// The app will initally render with animations disabled, so that the first load
+// feels static and fast.
 let animations = false
-let defaultPageMode
+let pageModeHasBeenApplied = false
 
 /**
  * The LayoutDoc component sets the layout of the app itself. It accepts the
@@ -18,26 +18,27 @@ export default function LayoutDoc({
   seoDesc = 'Help page for Cardinal Apps',
   favicon = '/favicon/favicon.ico',
   pages = [],
-  sidebarModeConfig,
+  page = {},
   children
 }) {
-  // All possible modes that the sidebar cycles through
+  // All possible layout modes that we can cycle through
   const modes = ['expanded', 'reading']
-
-  // mode is the current sidebar mode, controlled by the user, possibly
-  // different from the default pageMode
   const [mode, setMode] = useState(modes[0])
-
-  // Color theme, user controlled
   const [theme, setTheme] = useState('dark')
-  
-  if (sidebarModeConfig !== defaultPageMode) {
-    setMode(sidebarModeConfig)
-    defaultPageMode = sidebarModeConfig
+
+  console.log('Layout has animations set to', animations)
+
+  /**
+   * Whenever a new page is loaded, switch to the mode that the page wants. We
+   * only want to do this once per route.
+   */
+  if (!pageModeHasBeenApplied && page?.config?.sidebarMode !== mode && page.config.sidebarMode) {
+    setMode(page.config.sidebarMode)
+    pageModeHasBeenApplied = true
   }
 
   /**
-   * Enable animations after the initial render.
+   * Enable animations after the inital render of the Layout.
    */
   useEffect(() => {
     console.log('Initial load has rendered - now enabling animations')
@@ -51,14 +52,8 @@ export default function LayoutDoc({
     const currentIndex = modes.indexOf(mode)
     const nextIndex = currentIndex + 1
 
-    // cycle back to the front
-    if (nextIndex > modes.length - 1) {
-      setMode(modes[0])
-    }
-    // go to next possible mode 
-    else {
-      setMode(modes[nextIndex])
-    }
+    // Return the next mode in the array, or cycle back to the front
+    return nextIndex <= modes.length - 1 ? setMode(modes[nextIndex]) : setMode(modes[0]) 
   }
 
   return (

@@ -9,15 +9,12 @@ import cachedPages from '../cache/pages.json'
 import '../styles/styles.scss'
 
 function _app({ Component, pageProps }) {
-  const pageWantsSidebarMode = Component?.SidebarMode ? Component.SidebarMode : 'reading'
   const router = useRouter()
   const [pages, setPages] = useState(cachedPages || [])
-  const currentPage = pages.filter(page => page.route === router.pathname)
-
-  console.log('currentPage', currentPage)
+  const currentPage = pages.filter(page => page.route === router.pathname)[0]
 
   console.log('Rendering HelpApp with pages', pages)
-  console.log('pageWantsSidebarMode', pageWantsSidebarMode)
+  console.log('currentPage', currentPage)
   
   return (
     <>
@@ -30,8 +27,8 @@ function _app({ Component, pageProps }) {
       <HelpApp>
         <LayoutDoc
           pages={pages}
+          page={currentPage}
           theme="dark"
-          pageWantsSidebarMode={pageWantsSidebarMode}
         >
           {/* The component of the page being viewed */}
           <Component {...pageProps} />

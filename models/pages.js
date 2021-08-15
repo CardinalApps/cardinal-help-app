@@ -1,8 +1,8 @@
 /**
  * @file - models/pages.js
  *
- * Reads the Next.js page structure on the disk and returns an array of sections
- * and pages ordered by their page priority.
+ * Reads the Next.js page structure on the disk and returns an array of pages
+ * ordered by their level in the menu then their page priority.
  *
  * Use `npm run models/pages` to run and cache this model dev-side before
  * pushing to staging and prod.
@@ -15,12 +15,10 @@ const glob = require('glob')
  * Get all public pages.
  *
  * @returns {Array} - Returns a single dimensional array of pages. Pages are
- * sorted by section, then by priority. If no priority is set in the page's
+ * sorted by level, then by priority. If no priority is set in the page's
  * config, the sort order is undefined.
  */
 exports.getPages = async () => {
-  console.log('Reading pages on disk')
-
   // Only get the pages that are meant to be part of the Help app.
   // The order here will be the order shown in the frontend.
   let sections = await Promise.all([
@@ -37,29 +35,19 @@ exports.getPages = async () => {
     sections[i] = await Promise.all(sections[i].map(page => this.PageObject(page)))
   }
 
-  // sections = sections.map((sectionPages) => {
-  //   // Remove all the dinctinct directory paths, they are the same as the
-  //   // `/index.js` path for that dir.
-  //   return sectionPages.filter(page => page.includes('.js'))
-  // })
-
   // Sort each section by priority
   for (let i in sections) {
     sections[i] = sections[i].sort((a, b) => a.config.priority > b.config.priority ? 1 : -1)
   }
 
-  console.log(sections)
-
   // Merge all glob arrays
   const pages = [].concat(...sections)
-
-  console.log('Built these routes from the pages on disk', pages)
 
   return pages
 }
 
 /**
- * Returns a new PageObject instance based on a route.
+ * Returns a new PageObject for a single page.
  *
  * @param {string} pageFile - The path to the file in the `/pages` dir, as
  * returned by the glob. Paths are relative to the project root.
