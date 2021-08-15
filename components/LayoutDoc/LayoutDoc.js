@@ -32,7 +32,7 @@ export default function LayoutDoc({
    * Whenever a new page is loaded, switch to the mode that the page wants. We
    * only want to do this once per route.
    */
-  if (!pageModeHasBeenApplied && page?.config?.sidebarMode !== mode && 'sidebarMode' in page.config) {
+  if (!pageModeHasBeenApplied && page?.config?.sidebarMode && page?.config?.sidebarMode !== mode) {
     setMode(page.config.sidebarMode)
     pageModeHasBeenApplied = true
   }
