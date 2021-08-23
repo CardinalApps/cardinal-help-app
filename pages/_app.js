@@ -13,8 +13,7 @@ function _app({ Component, pageProps }) {
   const [pages, setPages] = useState(cachedPages || [])
   const currentPage = pages.filter(page => page.route === router.pathname)[0]
 
-  console.log('Rendering HelpApp with pages', pages)
-  console.log('currentPage', currentPage)
+  console.log('Rendering HelpApp with pages {pages}, {currentPage}', pages, currentPage)
   
   return (
     <>

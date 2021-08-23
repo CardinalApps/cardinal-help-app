@@ -31,7 +31,7 @@ another file with the same name, that ends in `.config.json`.
 
 ### Possible page configs
 
-```json
+```js
 {
   // Top level pages only: `image` or `font`
   "sectionIconType": "image",

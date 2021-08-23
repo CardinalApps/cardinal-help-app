@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './LayoutDoc.module.scss'
@@ -6,7 +7,6 @@ import styles from './LayoutDoc.module.scss'
 // The app will initally render with animations disabled, so that the first load
 // feels static and fast.
 let animations = false
-let pageModeHasBeenApplied = false
 
 /**
  * The LayoutDoc component sets the layout of the app itself. It accepts the
@@ -21,28 +21,47 @@ export default function LayoutDoc({
   page = {},
   children
 }) {
-  // All possible layout modes that we can cycle through
   const modes = ['expanded', 'reading']
-  const [mode, setMode] = useState(modes[0])
+  const [mode, setMode] = useState()
   const [theme, setTheme] = useState('dark')
-
-  console.log('Layout has animations set to', animations)
+  const router = useRouter()
 
   /**
-   * Whenever a new page is loaded, switch to the mode that the page wants. We
-   * only want to do this once per route.
+   * Helper function that checks if the sidebar mode set in the page config
+   * matches the currently set sidebar mode. If it doesn't, the sidebar mode
+   * will be changed, triggering an animation.
+   * 
+   * @param {string} pageSidebarMode - The mode of the upcoming page.
    */
-  if (!pageModeHasBeenApplied && page?.config?.sidebarMode && page?.config?.sidebarMode !== mode) {
-    setMode(page.config.sidebarMode)
-    pageModeHasBeenApplied = true
+  const maybeSetPageSidebarMode = (pageSidebarMode) => {
+    if (pageSidebarMode !== mode) {
+      setMode(pageSidebarMode)
+    }
   }
+
+  /**
+   * Whenever a new page is loaded, maybe switch to the mode that the page
+   * wants. We only want to do this once per route.
+   */
+  useEffect(() => {
+    const routeChangeComplete = (url, shallow) => {
+      const newPage = pages.filter((page) => page.route === url)[0]
+      maybeSetPageSidebarMode(newPage.config.sidebarMode)
+    }
+
+    router.events.on('routeChangeComplete', routeChangeComplete)
+    return () => router.events.off('routeChangeComplete', routeChangeComplete)
+  }, [])
 
   /**
    * Enable animations after the inital render of the Layout.
    */
   useEffect(() => {
-    console.log('Initial load has rendered - now enabling animations')
-    animations = true
+    maybeSetPageSidebarMode(page.config.sidebarMode)
+    setTimeout(() => {
+      console.log('Initial load has rendered - now enabling animations')
+      animations = true
+    }, 0)
   }, [])
 
   /**

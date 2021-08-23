@@ -18,8 +18,6 @@ export default function Sidebar({ pages, mode, cycleMode, animate }) {
   const isSSR = typeof window === 'undefined'
   const [ref, bounds] = useMeasure()
 
-  console.log('Sidebar rendering with mode', mode)
-
   /**
    * What the user sees as the "sidebar" is actually the .inner div. The inner
    * div uses position:fixed, so that in `expanded` mode it can easily escape
@@ -77,7 +75,7 @@ export default function Sidebar({ pages, mode, cycleMode, animate }) {
     left: mode === 'reading' ? '0px' : '10px',
     right: mode === 'reading' ? '0px' : '10px',
     bottom: mode === 'reading' ? '0px' : '20px',
-    config: animate ? { mass: 4, tension: 220, friction: 18 } : { duration: 0 }
+    config: animate ? { mass: 2, tension: 220, friction: 15 } : { duration: 0 }
   })
 
   /**
@@ -108,6 +106,7 @@ export default function Sidebar({ pages, mode, cycleMode, animate }) {
             </animated.div>
           </header>
 
+          {/* TODO block click of this on home page */}
           <animated.button 
             className={styles.icon} 
             style={controlBarItemsTrail[1]}
