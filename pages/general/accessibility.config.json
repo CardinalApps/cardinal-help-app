@@ -1,5 +1,6 @@
 {
   "icon": "fas fa-universal-access",
   "iconType": "font",
-  "priority": 600
+  "priority": 600,
+  "sidebarMode": "reading"
 }

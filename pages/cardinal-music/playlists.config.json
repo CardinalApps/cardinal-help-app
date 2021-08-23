@@ -1,5 +1,6 @@
 {
   "icon": "fas fa-list-alt",
   "iconType": "font",
-  "priority": 400
+  "priority": 400,
+  "sidebarMode": "reading"
 }

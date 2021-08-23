@@ -1,5 +1,6 @@
 {
   "icon": "fas fa-terminal",
   "iconType": "font",
-  "priority": 200
+  "priority": 200,
+  "sidebarMode": "reading"
 }

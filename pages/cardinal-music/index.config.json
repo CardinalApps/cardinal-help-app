@@ -3,5 +3,6 @@
   "sectionIconType": "image",
   "icon": "fas fa-music",
   "iconType": "font",
-  "priority": 100
+  "priority": 100,
+  "sidebarMode": "reading"
 }

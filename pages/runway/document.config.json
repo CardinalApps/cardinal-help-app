@@ -1,6 +1,6 @@
 {
-  "icon": "fab fa-docker",
+  "icon": "fas fa-scroll",
   "iconType": "font",
-  "priority": 300,
+  "priority": 100,
   "sidebarMode": "reading"
 }

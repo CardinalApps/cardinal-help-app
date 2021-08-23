@@ -3,5 +3,6 @@
   "sectionIconType": "font",
   "icon": "fas fa-lock",
   "iconType": "font",
-  "priority": 100
+  "priority": 100,
+  "sidebarMode": "reading"
 }
