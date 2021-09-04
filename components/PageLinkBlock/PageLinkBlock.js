@@ -34,7 +34,7 @@ export default function PageLinkBlock({ title, icon, iconType, url }) {
   }
 
   const hoverSpring = useSpring({
-    transform: isHovering ? `rotate(${randomDegree(6, 6)}deg)` : 'rotate(0deg)',
+    transform: isHovering ? `rotate(${randomDegree(3, 3)}deg)` : 'rotate(0deg)',
     config: { mass: 1, tension: 180, friction: 12, velocity: 0.05 }
   })
 
