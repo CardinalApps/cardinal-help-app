@@ -86,7 +86,7 @@ export default function Sidebar({ pages, mode, cycleMode, animate }) {
     opacity: mode === 'reading' ? 0 : 1,
     transform: mode === 'reading' ? 'scale(0.93)' : 'scale(1)',
     delay: mode === 'reading' || !animate ? 0 : 300,
-    config: animate ? config.wobbly : { duration: 0 }
+    config: animate ? config.default : { duration: 0 }
   })
 
   return (
