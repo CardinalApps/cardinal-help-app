@@ -23,6 +23,7 @@ exports.getPages = async () => {
   // The order here will be the order shown in the frontend.
   let sections = await Promise.all([
     doGlob(`pages/index.js`), // special case for the home page
+    doGlob(`pages/runway/document.js`), // page layout testing
     doGlob(`pages/cardinal-server/**/*.js`),
     doGlob(`pages/cardinal-music/**/*.js`),
     doGlob(`pages/general/**/*.js`),

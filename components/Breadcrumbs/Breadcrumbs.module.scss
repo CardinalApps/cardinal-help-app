@@ -1,0 +1,14 @@
+.Breadcrumbs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.part {
+  font-size: 14px;
+  color: var(--text-color-2);
+}
+
+.sep {
+  margin: 0 5px;
+}

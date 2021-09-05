@@ -12,14 +12,14 @@ export default function Page() {
           </div>
           <div className="align-content-right align-center">
             <div className="meta">
-              <p>Updated Aug 1, 2021</p>
+             
             </div>
           </div>
         </div>
       </header>
 
       <div className="text">
-        <h1>Introduction to Cardinal Server</h1>
+        <h1>Cardinal Server</h1>
 
         <p></p>
       </div>

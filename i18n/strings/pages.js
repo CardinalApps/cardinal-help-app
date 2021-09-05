@@ -3,7 +3,7 @@ export default {
    * Cardinal Server
    */
   'page.cardinal-server.title': {
-    en: 'Introduction to Cardinal Server',
+    en: 'Cardinal Server',
   },
   'page.cardinal-server.Docker.title': {
     en: 'Cardinal Server for Docker',
@@ -22,7 +22,7 @@ export default {
    * Cardinal Music
    */
   'page.cardinal-music.title': {
-    en: 'Introduction to Cardinal Music',
+    en: 'Cardinal Music',
   },
   'page.cardinal-music.genres.title': {
     en: 'Music Genres',

@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import Icon from '../../components/Icon/Icon'
 import Button from '../../components/Button/Button'
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 
 export default function Page() {
   return (
@@ -12,6 +12,7 @@ export default function Page() {
             <Icon type="image" icon="/icons/logo-server.svg" size="l" />
             <Icon type="image" icon="/icons/logo-server.svg" size="m" />
             <Icon type="image" icon="/icons/logo-server.svg" size="s" />
+            <h2>Cardinal Server</h2>
           </div>
           <div className="align-content-right align-center">
             <div className="meta">
@@ -28,6 +29,7 @@ export default function Page() {
             <Icon type="font" icon="fas fa-cookie-bite" size="s" />
           </div>
         </div>
+        <Breadcrumbs path={['Runway', 'Document']} />
       </header>
 
       <div className="text">
@@ -45,7 +47,7 @@ export default function Page() {
           Example Button 2
         </Button>
 
-        <p>Years. Bring for have day moved above were creeping don&#39;t, void gathered whales won&#39;t yielding let replenish cattle. Us <strong>green</strong> don&#39;t bearing void dominion. To shall second third it, grass abundantly image gathering his made divide, together let greater may. Fifth set. Gathering, great dry creeping him without. Of whales, make. Image lesser gathering so darkness above Second man own that fly after said abundantly they&#39;re firmament Itself evening spirit give upon. Own. Morning. Grass <em>i</em> make all under, whales made upon greater in upon. Male is so unto had. Gathered Fifth deep very. <strong>Firmament</strong> own place isn&#39;t.</p>
+        <p>Years. Bring for <code>have day</code> moved above were creeping don&#39;t, void gathered whales won&#39;t yielding let replenish cattle. Us <strong>green</strong> don&#39;t bearing void dominion. To shall second third it, grass abundantly image gathering his made divide, together let greater may. Fifth set. Gathering, great dry creeping him without. Of whales, make. Image lesser gathering so darkness above Second man own that fly after said abundantly they&#39;re firmament Itself evening spirit give upon. Own. Morning. Grass <em>i</em> make all under, whales made upon greater in upon. Male is so unto had. Gathered Fifth deep very. <strong>Firmament</strong> own place isn&#39;t.</p>
         <p>To set, so two meat, seas us there, blessed fourth can&#39;t had. Itself stars of given forth creeping <em>day</em> rule, they&#39;re, tree don&#39;t whose wherein divided darkness own doesn&#39;t stars likeness over image make midst living heaven set thing. For place without a a. Second void days own them living midst form herb gathered. Dominion tree for earth meat hath day you seas deep she&#39;d own over years moving wherein thing called void she&#39;d. Whales one. Together our they&#39;re every days blessed. Have let and seed darkness shall gathering bearing Dominion. Own doesn&#39;t. For moveth tree for make doesn&#39;t had open lesser behold stars itself void. You fourth. Very tree. Give heaven. All. Dominion i beast. Said wherein from. Of wherein was shall whales.</p>
         <p>Creeping darkness in cattle midst tree wherein is lights them us likeness they&#39;re creature grass fowl fowl our divide very. Gathering tree multiply i itself don&#39;t spirit thing open doesn&#39;t upon second doesn&#39;t third rule signs face, under replenish great said was. Air let had called greater wherein fly, she&#39;d also fruitful moved beginning itself. Fish third second whose a made darkness divided fourth, <strong>stars</strong> won&#39;t thing whales gathered land hath. Void and own. Hath fish very isn&#39;t saying. Very multiply make can&#39;t sea and likeness creeping meat face you&#39;re made given can&#39;t his bearing, good you&#39;re Bring us wherein forth that, brought fourth yielding forth dry said <strong>appear</strong> called fowl sixth greater be very beginning give. Their gathered every likeness female said man a wherein life multiply spirit. The face upon us let in female fruitful doesn&#39;t two morning waters won&#39;t upon is.</p>
         <p>Night brought divided it evening won&#39;t he open wherein cattle have good first they&#39;re of sea void there saying, firmament upon evening creepeth night. Second may isn&#39;t light without the after <em>saying</em> face <strong>first</strong> whose great. Dry make that every. Itself given don&#39;t subdue shall blessed itself can&#39;t to evening his. Open you. Bring dominion, also subdue moved whose. To them you darkness grass which meat winged the. Given over and open upon stars may together grass make. Days for divide saw him she&#39;d given you&#39;re, itself gathering herb. Them his, signs set rule cattle cattle created stars spirit doesn&#39;t light be. So place rule called. Stars give was heaven she&#39;d. Third have, all given to their evening. Bring days hath fowl, image the fifth form him itself god appear day seed divided face. Fly lights our stars, fourth behold.</p>
