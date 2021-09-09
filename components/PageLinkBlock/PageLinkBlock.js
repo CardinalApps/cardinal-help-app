@@ -29,8 +29,8 @@ export default function PageLinkBlock({ title, icon, iconType, url }) {
    */
   const randomDegree = (maxLeft, maxRight) => {    
     return sample(['left', 'right']) === 'left'
-      ? random(-maxLeft, -2)
-      : random(2, maxRight)
+      ? random(-maxLeft, -1)
+      : random(1, maxRight)
   }
 
   const hoverSpring = useSpring({

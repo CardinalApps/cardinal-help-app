@@ -25,12 +25,12 @@ export default function MegaMenu({ pages }) {
             key={topLevelRoute.route} 
           >
             {/* Add the link for the level 1 route */}
-            <PageLinkBlock
+            {/* <PageLinkBlock
               title={i18n(topLevelRoute.titleI18nKey)}
               icon={topLevelRoute.config?.icon}
               iconType={topLevelRoute.config?.iconType}
               url={`${topLevelRoute.route}`}
-            />
+            /> */}
 
             {/* Add all the level 2+ routes that are children of the level 1 route */}
             {pages.map((childRoute) => {

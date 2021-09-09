@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styles from './Breadcrumbs.module.scss'
 
 export default function H2({ path, sep = '>' }) {
+  return <></>
   return (
     <nav className={styles.Breadcrumbs}>
       {path.map((part, index) => {

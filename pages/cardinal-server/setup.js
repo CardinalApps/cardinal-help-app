@@ -17,7 +17,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <Breadcrumbs path={['Cardinal Server', 'Setup']} />
+        <Breadcrumbs />
       </header>
 
       <div className="text">

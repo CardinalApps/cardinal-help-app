@@ -4,6 +4,7 @@
   width: var(--sidebar-width-reading);
   height: 300px;
   position: relative;
+  z-index: 1000;
 }
 
 // top, left, right, bottom are all set by the spring
