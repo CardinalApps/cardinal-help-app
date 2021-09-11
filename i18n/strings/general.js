@@ -3,6 +3,6 @@ export default {
     en: 'Cardinal Logo',
   },
   'sidebar.hero.title': {
-    en: `Get help with Cardinal apps`,
+    en: `Information and guides about Cardinal Apps`,
   },
 }

@@ -41,6 +41,7 @@
   margin-bottom: 30px;
   display: flex;
   align-items: center;
+  position: relative;
 
   .logo {
     width: 100%;
@@ -87,4 +88,23 @@
   will-change: top, left, right, bottom;
   background: var(--bg-4);
   -webkit-appearance: none;
+}
+
+.notOnHomeItems {
+  position: relative;
+}
+
+.homeItemsHidden {
+  pointer-events: none;
+}
+
+.permItems {
+  width: 100%;
+  padding-top: 30px;
+  text-align: center;
+  position: relative;
+
+  > div {
+    position: relative;
+  }
 }

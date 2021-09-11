@@ -87,6 +87,7 @@ export default function LayoutDoc({
         <div className={`${styles.pillar} ${styles.left}`}>
           <Sidebar
             pages={pages}
+            page={page}
             mode={mode}
             cycleMode={cycleMode}
             animate={animations}
