@@ -2,5 +2,11 @@
   "icon": "fas fa-window-maximize",
   "iconType": "font",
   "priority": 200,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Web Apps"
+  },
+  "pageTitle": {
+    "en": "Cardinal Web Apps"
+  }
 }

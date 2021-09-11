@@ -2,5 +2,11 @@
   "icon": "fas fa-layer-group",
   "iconType": "font",
   "priority": 100,
-  "sidebarMode": "expanded"
+  "sidebarMode": "expanded",
+  "blockIconTitle": {
+    "en": ""
+  },
+  "pageTitle": {
+    "en": ""
+  }
 }

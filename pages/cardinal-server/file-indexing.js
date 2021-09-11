@@ -35,10 +35,10 @@ export default function Page() {
         <h3>The Big Button</h3>
         <p>The Big Button allows you to manually start, pause, and resume the indexing service, however only the last (and longest) step of the indexing process can be paused. If the button glows red, it means it can't be paused right now.</p>
 
-        <p>Once started, you'll be able to monitor how many files are being imported, which file the service is currently processing, and an estimate for the time remaining. All you need to do it let is run until it's done, and while it's doing so, you can start using the other Cardinal apps right away. At the end of the run, you'll be presented with a log file summarizing the run.</p>
+        <p>Once started, you'll be able to monitor how many files are being imported, which file the service is currently processing, and an estimate for the time remaining. All you need to do it let is run until it's done. You can even start using the other Cardinal apps right away while it's running the import. At the end of the run, you'll be presented with a log file summarizing everything that it just did.</p>
 
         <h3>Indexing Options</h3>
-        <p>In the <em>Options</em> section, you can change options about the next indexing run. Changing an option while the service is already running will have no affect.</p>
+        <p>In the <em>Options</em> section, you can change options about the next indexing run. Changing an option while the service is already running will have no effect.</p>
         <h4>Modes</h4>
         <p>There are two modes available: <strong>quick</strong> and <strong>deep</strong>. Quick mode will only look for new files on the disk, making it great for quickly adding a few new songs or albums to your library. Deep mode will do everything that quick mode does, and will also check the MD5 of all files to see if they have been updated since the last time they were scanned. Deep mode is considerably slower than quick mode, which is why quick mode is the default, and why you should only use deep mode if you know you have files that had their metadata updated.</p>
 

@@ -2,5 +2,11 @@
   "icon": "fas fa-headset",
   "iconType": "font",
   "priority": 400,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Callback Plugins"
+  },
+  "pageTitle": {
+    "en": "Creating Callback Plugins"
+  }
 }

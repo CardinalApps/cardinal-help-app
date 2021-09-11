@@ -2,5 +2,11 @@
   "icon": "fas fa-shapes",
   "iconType": "font",
   "priority": 200,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Installation & Setup"
+  },
+  "pageTitle": {
+    "en": "Installation & Setup"
+  }
 }

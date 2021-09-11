@@ -6,5 +6,11 @@
   "icon": "fas fa-hdd",
   "iconType": "font",
   "priority": 100,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": ""
+  },
+  "pageTitle": {
+    "en": ""
+  }
 }

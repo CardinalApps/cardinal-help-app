@@ -36,8 +36,7 @@ export default function Page() {
         <p>Safari on macOS uses a different rendering engine than the one that the desktop apps use, so like Firefox, there will be visual differences. Safari also does not run Cardinal apps as well as Chromium based browsers. However, Safari on macOS is the only browser that supports  <code>.m4a</code> files. It is recommended to use Chromium if possible.</p>
 
         <h2>Mobile Browsers</h2>
-        <p>Since Cardinal Server is meant to be self hosted, it does not support HTTPS connections for the web apps. Unfortunately, having a HTTPS connection is a strict requirement for Progressive Web Apps (PWAs), even on local area networks. Without the ability to deliver PWAs, using the web apps on a mobile device can be... painful. Should you choose to use a mobile device, you'll need to keep the screen on and the browser focused if you want playback to continue.</p>
-        <p>There are also visual bugs when using Safari on iOS, or any other iOS web browser. Native apps that wrap the web apps are planned for some point in the future.</p>
+        <p>See the <Link href="/general/mobile-apps"><a>Mobile Apps</a></Link> guide.</p>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import PageLinkBlock from '../PageLinkBlock/PageLinkBlock'
 import MegaMenuSection from '../MegaMenuSection/MegaMenuSection'
+import useLocalText from '../../hooks/useLocalText'
 import styles from './MegaMenu.module.scss'
 import { i18n } from '../../i18n/'
 
@@ -37,7 +38,7 @@ export default function MegaMenu({ pages }) {
               if (childRoute.level < 2 || childRoute.parts[0] !== topLevelRoute.parts[0]) return
               return (
                 <PageLinkBlock
-                  title={i18n(childRoute.titleI18nKey)}
+                  title={useLocalText(childRoute.config.blockIconTitle)}
                   url={childRoute.route}
                   icon={childRoute.config?.icon}
                   iconType={childRoute.config?.iconType}

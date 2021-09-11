@@ -2,5 +2,11 @@
   "icon": "fas fa-copy",
   "iconType": "font",
   "priority": 400,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "File Indexing"
+  },
+  "pageTitle": {
+    "en": "File Indexing in Cardinal Server"
+  }
 }

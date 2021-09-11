@@ -3,6 +3,12 @@
   "sectionIconType": "font",
   "icon": "fas fa-laptop-code",
   "iconType": "font",
-  "priority": 100,
-  "sidebarMode": "reading"
+  "priority": 50,
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": ""
+  },
+  "pageTitle": {
+    "en": ""
+  }
 }

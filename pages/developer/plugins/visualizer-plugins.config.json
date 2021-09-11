@@ -2,5 +2,11 @@
   "icon": "fas fa-magic",
   "iconType": "font",
   "priority": 600,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Visualizer Plugins"
+  },
+  "pageTitle": {
+    "en": "Creating Visualizer Plugins"
+  }
 }

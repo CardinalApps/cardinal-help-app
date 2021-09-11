@@ -2,5 +2,11 @@
   "icon": "fas fa-parachute-box",
   "iconType": "font",
   "priority": 500,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Updating"
+  },
+  "pageTitle": {
+    "en": "Updating Cardinal Apps"
+  }
 }

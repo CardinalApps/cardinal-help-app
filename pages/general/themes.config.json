@@ -2,5 +2,11 @@
   "icon": "fas fa-palette",
   "iconType": "font",
   "priority": 400,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Themes"
+  },
+  "pageTitle": {
+    "en": "Customizing With Themes"
+  }
 }

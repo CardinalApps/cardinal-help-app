@@ -27,8 +27,8 @@ exports.getPages = async () => {
     doGlob(`pages/cardinal-server/**/*.js`),
     doGlob(`pages/cardinal-music/**/*.js`),
     doGlob(`pages/general/**/*.js`),
-    doGlob(`pages/privacy/**/*.js`),
     doGlob(`pages/developer/**/*.js`),
+    doGlob(`pages/privacy/**/*.js`),
   ])
 
   // Convert all pages in all section to PageObject instances

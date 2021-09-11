@@ -42,7 +42,7 @@ export default function Page() {
         <p>Mark the <code>.AppImage</code> file as executable and run it.</p>
 
         <h2>Connecting to a Cardinal Server</h2>
-        <p>Once you start up Cardinal Music, you'll see to connect to the Cardinal Server that you've set up on the local area network. The <em>host</em> and <em>port</em> information can be found on the main page of Cardinal Server. Cardinal Server will need to be online while using Music.</p>
+        <p>Once you start up Cardinal Music, you'll need to connect to the Cardinal Server that you've set up on the local area network. The <em>host</em> and <em>port</em> information can be found on the main page of Cardinal Server. Cardinal Server will need to be online while using Music.</p>
       </div>
     </div>
   )

@@ -2,5 +2,11 @@
   "icon": "fas fa-wifi",
   "iconType": "font",
   "priority": 500,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Monitoring Connected Devices"
+  },
+  "pageTitle": {
+    "en": "Monitoring Connected Devices"
+  }
 }

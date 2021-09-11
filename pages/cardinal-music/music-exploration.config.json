@@ -2,5 +2,11 @@
   "icon": "fas fa-compass",
   "iconType": "font",
   "priority": 300,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Music Exploration"
+  },
+  "pageTitle": {
+    "en": "Exploring Your Music"
+  }
 }

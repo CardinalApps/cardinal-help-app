@@ -21,9 +21,11 @@ export default function Page() {
       </header>
 
       <div className="text">
-        <h1>Accessibility</h1>
-        <p>Much effort has been put into the applications to try and make them as accessible as possible. All app features, buttons, menu items, and anything clicky, should be reachable using only the keyboard.</p>
-        <p>In some cases when interacting with the UI, if the user has an audio feedback application running like VoiceOver, the UI will speak phrases to help sure the user has good feedback about what they're doing.</p>
+        <h1>Using Cardinal in your Language</h1>
+        <p>All Cardinal apps default to English. Once installed, you can change the language in the settings. There are currently 1.5 languages available: English, and an unfinished French translation (working on it).</p>
+
+        <h2>Contributing Translations</h2>
+        <p>Join us on <a href="https://discord.gg/WWXngggPp4" target="_blank">Discord</a> if you'd like to contribute translations to any Cardinal project, from the core apps to this website.</p>
       </div>
     </div>
   )

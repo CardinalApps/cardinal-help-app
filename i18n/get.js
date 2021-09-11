@@ -1,5 +1,4 @@
 import generalStrings from './strings/general'
-import pagesStrings from './strings/pages'
 import menuStrings from './strings/menu'
 import helpHomeStrings from './strings/help-home'
 
@@ -41,7 +40,6 @@ export function i18n(key, locale = 'en') {
 export function i18ns() {
   return {
     ...generalStrings,
-    ...pagesStrings,
     ...helpHomeStrings,
     ...menuStrings,
     }

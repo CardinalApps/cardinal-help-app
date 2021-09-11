@@ -1,12 +1,12 @@
 {
-  "icon": "fas fa-scroll",
+  "icon": "fas fa-language",
   "iconType": "font",
   "priority": 100,
   "sidebarMode": "reading",
   "blockIconTitle": {
-    "en": "Test"
+    "en": "Translating"
   },
   "pageTitle": {
-    "en": "Runway"
+    "en": "Using Cardinal in your Language"
   }
 }

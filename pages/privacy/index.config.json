@@ -4,5 +4,11 @@
   "icon": "fas fa-lock",
   "iconType": "font",
   "priority": 100,
-  "sidebarMode": "reading"
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": ""
+  },
+  "pageTitle": {
+    "en": ""
+  }
 }
