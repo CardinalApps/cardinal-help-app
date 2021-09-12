@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import { useSpring, config, animated } from 'react-spring'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './LayoutDoc.module.scss'
 
@@ -24,6 +25,7 @@ export default function LayoutDoc({
   const modes = ['expanded', 'reading']
   const [mode, setMode] = useState()
   const [theme, setTheme] = useState('dark')
+  const [layout, setLayout] = useState('book')
   const router = useRouter()
 
   /**
@@ -75,6 +77,30 @@ export default function LayoutDoc({
     return nextIndex <= modes.length - 1 ? setMode(modes[nextIndex]) : setMode(modes[0]) 
   }
 
+  /**
+   * Spring for the main content in the center pillar.
+   */
+  const mainContentSpring = useSpring({
+    width: layout === 'book' ? 800 : window.innerWidth - 100,
+    margin: layout === 'book' ? 25 : 0,
+    paddingTop: layout === 'book' ? 40 : 20,
+    paddingLeft: layout === 'book' ? 50 : 40,
+    paddingRight: layout === 'book' ? 50 : 0,
+    paddingBottom: layout === 'book' ? 40 : 20,
+    boxShadow: layout === 'book' ? '0 0 9px 2px #1b1b1b' : '0 0 0px 0px #1b1b1b',
+    borderRadius: layout === 'book' ? 40 : 0,
+    background: layout === 'book' ? '#3d3d3d' : '#272727',
+    config: animations ? config.default : { duration: 0 }
+  })
+
+  /**
+   * Spring for the right pillar.
+   */
+  const layoutRightPillarSpring = useSpring({
+    minWidth: layout === 'book' ? 100 : 0,
+    config: { duration: 0 }
+  })
+
   return (
     <div className={styles.LayoutDoc} data-theme={theme}>
       <Head>
@@ -90,17 +116,26 @@ export default function LayoutDoc({
             page={page}
             mode={mode}
             cycleMode={cycleMode}
+            layout={layout}
+            setLayout={setLayout}
             animate={animations}
           />
         </div>
 
         <div className={`${styles.pillar} ${styles.center}`}>
-          <div className={styles.pageContent}>
+          <animated.div
+            className={styles.pageContent}
+            style={mainContentSpring}
+          >
             {children}
-          </div>
+          </animated.div>
         </div>
 
-        <div className={`${styles.pillar} ${styles.right}`}></div>
+        <animated.div
+          className={`${styles.pillar} ${styles.right}`}
+          style={layoutRightPillarSpring}
+        >
+        </animated.div>
       </div>
     </div>
   )

@@ -16,10 +16,10 @@ import styles from './Sidebar.module.scss'
  *
  * The sidebar uses a few springs to handle the animation of the mode change.
  */
-export default function Sidebar({ pages, page, mode, cycleMode, animate }) {
+export default function Sidebar({ pages, page, mode, cycleMode, layout, setLayout, animate }) {
   const isSSR = typeof window === 'undefined'
   const isHome = page.route === '/'
-  const [hoveringMenuItem, setHoveringMenuItem] = useState(false);
+  const [hoveringMenuItem, setHoveringMenuItem] = useState(false)
   const [ref, bounds] = useMeasure()
 
   /**
@@ -97,6 +97,15 @@ export default function Sidebar({ pages, page, mode, cycleMode, animate }) {
   })
 
   /**
+   * Toggles the visibility of a few items that should not be seen when on the
+   * home page.
+   */
+  const layoutSpring = useSpring({
+    opacity: mode === 'reading' ? 1 : 0,
+    config: animate ? config.default : { duration: 0 }
+  })
+
+  /**
    * Spring for permanent items wrapper.
    */
   const permItemsParentSpring = useSpring({
@@ -115,7 +124,7 @@ export default function Sidebar({ pages, page, mode, cycleMode, animate }) {
   /**
    * Create a trail of springs for the items in the .controlBar.
    */
-  const controlBarItemsTrail = useTrail(3, {
+  const controlBarItemsTrail = useTrail(4, {
     top: mode === 'reading' ? '0px' : '20px',
     left: mode === 'reading' ? '0px' : '10px',
     right: mode === 'reading' ? '0px' : '10px',
@@ -133,6 +142,24 @@ export default function Sidebar({ pages, page, mode, cycleMode, animate }) {
     delay: mode === 'reading' || !animate ? 0 : 300,
     config: animate ? config.default : { duration: 0 }
   })
+
+  /**
+   * When changing between book and wiki layouts, this will trigger window
+   * resize events, which the `useMeasure` ref listens for, to trigger updates
+   * of the .inner sidebar position.
+   * 
+   * TODO: This is not ideal, it estimates the duration of the spring animation.
+   * Is there a better way to update the position of the sidebar while spring
+   * animations are running?
+   */
+  const startSidebarMover = () => {
+    let iterations = 0
+    const runner = setInterval(() => {
+      window.dispatchEvent(new Event('resize'))
+      iterations++
+      if (iterations >= 20) clearInterval(runner)
+    }, 50)
+  }
 
   return (
     <div className={styles.Sidebar} ref={ref}>
@@ -188,6 +215,36 @@ export default function Sidebar({ pages, page, mode, cycleMode, animate }) {
               <a href="https://discord.gg/WWXngggPp4" target="_blank" rel="nofollow">
                 <animated.i className="fab fa-discord" style={socialIconsSpring}></animated.i>
               </a>
+            </animated.div>
+          </animated.div>
+
+          {/* Layout controls */}
+          <animated.div
+            className={`${styles.permItems} ${isHome ? styles.homeItemsHidden : ''}`}
+            style={controlBarItemsTrail[3]}
+          >
+            <animated.div style={layoutSpring}>
+              <p className={styles.layoutTitle}>{i18n('sidebar.layouts.title')}</p>
+              <ul className={styles.layouts}>
+                <li>
+                  <button
+                    type="button"
+                    className={layout === 'book' ? styles.activeButton : ''}
+                    onClick={() => { setLayout('book'); startSidebarMover() }}
+                  >
+                    {i18n('sidebar.layout.book')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className={layout === 'wiki' ? styles.activeButton : ''}
+                    onClick={() => { setLayout('wiki'); startSidebarMover(); }}
+                  >
+                    {i18n('sidebar.layout.wiki')}
+                  </button>
+                </li>
+              </ul>
             </animated.div>
           </animated.div>
         </animated.div>
