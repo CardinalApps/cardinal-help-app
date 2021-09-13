@@ -25,18 +25,22 @@ export default function Page() {
         <p>Cardinal Music's flagship feature is the Explore Music page. It's a fun way to interact with your music library, play random music, and get suggestions.</p>
 
         <h2>Top Picks</h2>
+        <img src="/screenshots/music-exploration-top-picks.png" className="shadow med" alt="Screenshot of the Top Picks section of the Music Exploration page in Cardinal Music" title="Top Picks" />
         <p>The name of this section depends on the time of day. The idea is that it should suggest the top picks for this time of the day, based on your previous playback at this time. Currently it simply shows random music. </p>
 
         <h2>Most Played</h2>
+        <img src="/screenshots/music-exploration-top-tracks.png" className="shadow med" alt="Screenshot of the Top Tracks section of the Music Exploration page in Cardinal Music" title="Top Tracks" />
         <p>Here you'll find your most play tracks from your entire library.</p>
 
         <h2>The Four Horsemen</h2>
+        <img src="/screenshots/music-exploration-random-buttons.png" className="shadow med" alt="Screenshot of the four random buttons in the Music Exploration page in Cardinal Music" title="Four Random Buttons" />
         <p>The most prominent feature of the Explore Music page is the four large buttons for playing random music. These buttons take center stage, offering an easy way to just play something now. Not to mention that they have the easiest of the Easter eggs to find.</p>
 
         <h2>Recently Added</h2>
         <p>After importing new music in Cardinal Server, it'll appear right here for a little while.</p>
 
         <h2>Albums With Favorites</h2>
+        <img src="/screenshots/music-exploration-albums-with-favorites.png" className="shadow med" alt="Screenshot of the Albums with Favorites section of the Music Exploration page in Cardinal Music" title="Albums with Favorites" />
         <p>When you add a song to your favorites, its album will appear in this section. It's a great way to quickly find the music you like most.</p>
 
         <h4>And There's More Coming</h4>

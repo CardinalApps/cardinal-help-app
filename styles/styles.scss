@@ -78,37 +78,42 @@ h1 {
   
   h2 {
     margin-bottom: calc(var(--text-section-spacing) - 11px);
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
+    color: var(--text-color);
   }
 
   h3 {
     margin-bottom: calc(var(--text-section-spacing) - 12px);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
+    color: var(--text-color-2);
   }
 
   h4 {
     margin-bottom: calc(var(--text-section-spacing) - 13px);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
+    color: var(--text-color-2);
   }
 
   h5 {
     margin-bottom: calc(var(--text-section-spacing) - 14px);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
+    color: var(--text-color-2);
   }
 
   h6 {
     margin-bottom: calc(var(--text-section-spacing) - 15px);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
+    color: var(--text-color-2);
   }
 
   p, ul, ol {
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 600;
     margin-bottom: var(--text-section-spacing);
 
     a {
@@ -186,6 +191,19 @@ h1 {
 
   img {
     margin-bottom: var(--text-section-spacing);
+    display: block;
+    transition: all 200ms;
+
+    &.shadow {
+      border-radius: 10px;
+      box-shadow: 0px 9px 28px 0px #1b1b1b;
+    }
+
+    &.med {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   .coming-soon {
@@ -267,6 +285,21 @@ h1 {
 
     .meta {
 
+    }
+  }
+}
+
+[data-layout="wiki"] {
+
+  .text {
+
+    h2, h3, h4, h5, h6 {
+      clear: both;
+    }
+
+    img {
+      float: right;
+      margin: 0 0 20px 20px;
     }
   }
 }

@@ -20,6 +20,19 @@ function _app({ Component, pageProps }) {
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Yantramanav:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
         <link href="/fonts/fontawesome/css/all.css" rel="stylesheet"></link>
+
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWS7Y0MTLJ"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FWS7Y0MTLJ');
+            `,
+          }}
+        />
       </Head>
 
       {/* Persistent layout for the HelpApp itself and the sidebar */}

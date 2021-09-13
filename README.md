@@ -70,3 +70,7 @@ must run `npm run models/pages`.
 The top-level `cache` directory contains cache that is created by the scripts.
 This directory is not related to the internal Next.js cache, and we should
 ensure that `cache` gets pushed to staging and prod.
+
+## License
+
+Uses the GPLv3 software license.

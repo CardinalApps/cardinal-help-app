@@ -22,9 +22,11 @@ export default function Page() {
 
       <div className="text">
         <h1>Using Playlists</h1>
+        <img src="/screenshots/playlist.png" className="shadow med" alt="Screenshot of a playlist in the Cardinal Music" title="Top Picks" />
         <p>Cardinal Music comes with the ability to create and manage Playlists.</p>
 
         <h2>Creating Playlists</h2>
+        <img src="/screenshots/playlists-create.png" className="shadow med" alt="Screenshot of creating a playlist in the Cardinal Music" title="Create playlist" />
         <p>Playlists can be created on the <strong>Playlists</strong> page. Click the plus (+) button and enter the name of the playlist.</p>
 
         <h2>Adding Music to a Playlists</h2>

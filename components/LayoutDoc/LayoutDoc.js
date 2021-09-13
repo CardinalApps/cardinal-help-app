@@ -25,7 +25,7 @@ export default function LayoutDoc({
   const modes = ['expanded', 'reading']
   const [mode, setMode] = useState()
   const [theme, setTheme] = useState('dark')
-  const [layout, setLayout] = useState('book')
+  const [layout, setLayout] = useState(typeof localStorage !== 'undefined' ? localStorage.getItem('layout') : 'book')
   const router = useRouter()
 
   /**
@@ -78,15 +78,28 @@ export default function LayoutDoc({
   }
 
   /**
+   * Changes and saves the current layout.
+   * 
+   * @param {string} layout - `book` or `wiki`
+   */
+  const changeLayout = (layout) => {
+    setLayout(layout)
+
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('layout', layout)
+    }
+  }
+
+  /**
    * Spring for the main content in the center pillar.
    */
   const mainContentSpring = useSpring({
     width: layout === 'book' ? 800 : window.innerWidth - 100,
     margin: layout === 'book' ? 25 : 0,
-    paddingTop: layout === 'book' ? 40 : 20,
+    paddingTop: layout === 'book' ? 40 : 40,
     paddingLeft: layout === 'book' ? 50 : 40,
-    paddingRight: layout === 'book' ? 50 : 0,
-    paddingBottom: layout === 'book' ? 40 : 20,
+    paddingRight: layout === 'book' ? 50 : 40,
+    paddingBottom: layout === 'book' ? 40 : 40,
     boxShadow: layout === 'book' ? '0 0 9px 2px #1b1b1b' : '0 0 0px 0px #1b1b1b',
     borderRadius: layout === 'book' ? 40 : 0,
     background: layout === 'book' ? '#3d3d3d' : '#272727',
@@ -109,7 +122,7 @@ export default function LayoutDoc({
         <link rel="icon" href={favicon} />
       </Head>
 
-      <div id="LayoutDoc" className={styles.LayoutDoc}>
+      <div id="LayoutDoc" className={styles.LayoutDoc} data-layout={layout}>
         <div className={`${styles.pillar} ${styles.left}`}>
           <Sidebar
             pages={pages}
@@ -117,7 +130,7 @@ export default function LayoutDoc({
             mode={mode}
             cycleMode={cycleMode}
             layout={layout}
-            setLayout={setLayout}
+            changeLayout={changeLayout}
             animate={animations}
           />
         </div>

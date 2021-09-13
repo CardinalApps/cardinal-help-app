@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { useSpring, useTrail, animated, config } from 'react-spring'
 import useMeasure from 'react-use-measure'
 import { sample, random } from 'lodash'
@@ -16,7 +16,7 @@ import styles from './Sidebar.module.scss'
  *
  * The sidebar uses a few springs to handle the animation of the mode change.
  */
-export default function Sidebar({ pages, page, mode, cycleMode, layout, setLayout, animate }) {
+export default function Sidebar({ pages, page, mode, cycleMode, layout, changeLayout, animate }) {
   const isSSR = typeof window === 'undefined'
   const isHome = page.route === '/'
   const [hoveringMenuItem, setHoveringMenuItem] = useState(false)
@@ -226,11 +226,19 @@ export default function Sidebar({ pages, page, mode, cycleMode, layout, setLayou
             <animated.div style={layoutSpring}>
               <p className={styles.layoutTitle}>{i18n('sidebar.layouts.title')}</p>
               <ul className={styles.layouts}>
+                {/* 
+                  TODO:
+                  The className conditions for these buttons is not working correctly.
+                  During SSR, the default "book" layout is used, so the "book" button 
+                  is cached server side with the activeButton className. I am unable 
+                  to get the state of these buttons to refresh after the on the client 
+                  side, so it always defaults to "book" being active even when it's "wiki".
+                 */}
                 <li>
                   <button
                     type="button"
                     className={layout === 'book' ? styles.activeButton : ''}
-                    onClick={() => { setLayout('book'); startSidebarMover() }}
+                    onClick={() => { changeLayout('book'); startSidebarMover(); }}
                   >
                     {i18n('sidebar.layout.book')}
                   </button>
@@ -239,7 +247,8 @@ export default function Sidebar({ pages, page, mode, cycleMode, layout, setLayou
                   <button
                     type="button"
                     className={layout === 'wiki' ? styles.activeButton : ''}
-                    onClick={() => { setLayout('wiki'); startSidebarMover(); }}
+                    onClick={() => { changeLayout('wiki'); startSidebarMover(); }}
+                    on={(e) => {console.log('asdasd',e)}}
                   >
                     {i18n('sidebar.layout.wiki')}
                   </button>
