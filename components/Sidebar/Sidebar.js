@@ -228,7 +228,7 @@ export default function Sidebar({ pages, page, mode, cycleMode, layout, changeLa
               <ul className={styles.layouts}>
                 {/* 
                   TODO:
-                  The className conditions for these buttons is not working correctly.
+                  The className conditions for these buttons are not working correctly.
                   During SSR, the default "book" layout is used, so the "book" button 
                   is cached server side with the activeButton className. I am unable 
                   to get the state of these buttons to refresh after the on the client 
@@ -238,7 +238,10 @@ export default function Sidebar({ pages, page, mode, cycleMode, layout, changeLa
                   <button
                     type="button"
                     className={layout === 'book' ? styles.activeButton : ''}
-                    onClick={() => { changeLayout('book'); startSidebarMover(); }}
+                    onClick={() => {
+                      changeLayout('book')
+                      startSidebarMover()
+                    }}
                   >
                     {i18n('sidebar.layout.book')}
                   </button>
@@ -247,8 +250,10 @@ export default function Sidebar({ pages, page, mode, cycleMode, layout, changeLa
                   <button
                     type="button"
                     className={layout === 'wiki' ? styles.activeButton : ''}
-                    onClick={() => { changeLayout('wiki'); startSidebarMover(); }}
-                    on={(e) => {console.log('asdasd',e)}}
+                    onClick={() => {
+                      changeLayout('wiki')
+                      startSidebarMover()
+                    }}
                   >
                     {i18n('sidebar.layout.wiki')}
                   </button>

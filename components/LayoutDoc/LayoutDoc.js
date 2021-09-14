@@ -22,10 +22,23 @@ export default function LayoutDoc({
   page = {},
   children
 }) {
+  // FIXME
+  let defaultLayout
+
+  // SSR
+  if (typeof localStorage === 'undefined') {
+    defaultLayout = 'book'
+  }
+  // browser
+  else {
+    const storedLayout = localStorage.getItem('layout')
+    defaultLayout = storedLayout !== '' && storedLayout ? storedLayout : 'book'
+  }
+
   const modes = ['expanded', 'reading']
   const [mode, setMode] = useState()
   const [theme, setTheme] = useState('dark')
-  const [layout, setLayout] = useState(typeof localStorage !== 'undefined' ? localStorage.getItem('layout') : 'book')
+  const [layout, setLayout] = useState(defaultLayout)
   const router = useRouter()
 
   /**
@@ -113,6 +126,8 @@ export default function LayoutDoc({
     minWidth: layout === 'book' ? 100 : 0,
     config: { duration: 0 }
   })
+
+  console.log('defaultLayout', defaultLayout)
 
   return (
     <div className={styles.LayoutDoc} data-theme={theme}>
