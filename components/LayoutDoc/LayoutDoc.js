@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { useSpring, config, animated } from 'react-spring'
 import Sidebar from '../Sidebar/Sidebar'
+import Page from '../Page/Page'
 import styles from './LayoutDoc.module.scss'
 
 // The app will initally render with animations disabled, so that the first load
@@ -155,7 +156,9 @@ export default function LayoutDoc({
             className={styles.pageContent}
             style={mainContentSpring}
           >
-            {children}
+            <Page>
+              {children}
+            </Page>
           </animated.div>
         </div>
 

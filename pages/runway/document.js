@@ -1,8 +1,15 @@
+import { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Icon from '../../components/Icon/Icon'
 import Button from '../../components/Button/Button'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
+import { addPage } from '../../store/slices/pagesSlice'
 
 export default function Page() {
+  const newPageInput = useRef(null)
+  const [newPageName, setNewPageName] = useState('')
+  const dispatch = useDispatch()
+
   return (
     <div className="document">
       <header>
@@ -46,6 +53,13 @@ export default function Page() {
         <Button onClick={() => console.log('Clickaroni 2')}>
           Example Button 2
         </Button>
+
+        <form id="add-page">
+          <input type="text" ref={newPageInput} value={newPageName} onChange={(e) => setNewPageName(e.target.value)} />
+          <Button onClick={(e) => dispatch(addPage(newPageName))}>
+            Add Page
+          </Button>
+        </form>
 
         <p>Years. Bring for <code>have day</code> moved above were creeping don&#39;t, void gathered whales won&#39;t yielding let replenish cattle. Us <strong>green</strong> don&#39;t bearing void dominion. To shall second third it, grass abundantly image gathering his made divide, together let greater may. Fifth set. Gathering, great dry creeping him without. Of whales, make. Image lesser gathering so darkness above Second man own that fly after said abundantly they&#39;re firmament Itself evening spirit give upon. Own. Morning. Grass <em>i</em> make all under, whales made upon greater in upon. Male is so unto had. Gathered Fifth deep very. <strong>Firmament</strong> own place isn&#39;t.</p>
         <p>To set, so two meat, seas us there, blessed fourth can&#39;t had. Itself stars of given forth creeping <em>day</em> rule, they&#39;re, tree don&#39;t whose wherein divided darkness own doesn&#39;t stars likeness over image make midst living heaven set thing. For place without a a. Second void days own them living midst form herb gathered. Dominion tree for earth meat hath day you seas deep she&#39;d own over years moving wherein thing called void she&#39;d. Whales one. Together our they&#39;re every days blessed. Have let and seed darkness shall gathering bearing Dominion. Own doesn&#39;t. For moveth tree for make doesn&#39;t had open lesser behold stars itself void. You fourth. Very tree. Give heaven. All. Dominion i beast. Said wherein from. Of wherein was shall whales.</p>

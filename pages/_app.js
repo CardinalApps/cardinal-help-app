@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
+import { Provider } from 'react-redux'
 import HelpApp from '../components/HelpApp/HelpApp'
 import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
 import cachedPages from '../cache/pages.json'
+import store from '../store/store'
 
 // Global styles
 import '../styles/styles.scss'
@@ -36,16 +38,18 @@ function _app({ Component, pageProps }) {
       </Head>
 
       {/* Persistent layout for the HelpApp itself and the sidebar */}
-      <HelpApp>
-        <LayoutDoc
-          pages={pages}
-          page={currentPage}
-          theme="dark"
-        >
-          {/* The component of the page being viewed */}
-          <Component {...pageProps} />
-        </LayoutDoc>
-      </HelpApp>
+      <Provider store={store}>
+        <HelpApp>
+          <LayoutDoc
+            pages={pages}
+            page={currentPage}
+            theme="dark"
+          >
+            {/* The component of the page being viewed */}
+            <Component {...pageProps} />
+          </LayoutDoc>
+        </HelpApp>
+      </Provider>
     </>
   )
 }

@@ -1,6 +1,6 @@
 {
-  "name": "cardinal-website-next",
-  "description": "The React verison of cardinalapps.xyz",
+  "name": "cardinal-help-app",
+  "description": "The Help App for Cardinal",
   "version": "0.1.0",
   "author": "somebeaver",
   "private": true,
@@ -11,11 +11,13 @@
     "models/pages": "node scripts/build-page-cache.js"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "glob": "^7.1.7",
     "lodash": "^4.17.21",
     "next": "^11.1.0",
     "react": "17.x",
     "react-dom": "17.x",
+    "react-redux": "^7.2.5",
     "react-spring": "^9.2.4",
     "react-use-measure": "^2.0.4",
     "sass": "^1.35.2"
