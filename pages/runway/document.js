@@ -1,14 +1,17 @@
 import { useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Icon from '../../components/Icon/Icon'
 import Button from '../../components/Button/Button'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import { addPage } from '../../store/slices/pagesSlice'
 
 export default function Page() {
-  const newPageInput = useRef(null)
-  const [newPageName, setNewPageName] = useState('')
   const dispatch = useDispatch()
+  const pages = useSelector((state) => state.pages)
+  const [newPageName, setNewPageName] = useState('')
+  const newPageInput = useRef(null)
+
+  console.log(pages)
 
   return (
     <div className="document">
@@ -59,6 +62,9 @@ export default function Page() {
           <Button onClick={(e) => dispatch(addPage(newPageName))}>
             Add Page
           </Button>
+          <div>
+            {(pages || []).map(page => `${page}, `)}
+          </div>
         </form>
 
         <p>Years. Bring for <code>have day</code> moved above were creeping don&#39;t, void gathered whales won&#39;t yielding let replenish cattle. Us <strong>green</strong> don&#39;t bearing void dominion. To shall second third it, grass abundantly image gathering his made divide, together let greater may. Fifth set. Gathering, great dry creeping him without. Of whales, make. Image lesser gathering so darkness above Second man own that fly after said abundantly they&#39;re firmament Itself evening spirit give upon. Own. Morning. Grass <em>i</em> make all under, whales made upon greater in upon. Male is so unto had. Gathered Fifth deep very. <strong>Firmament</strong> own place isn&#39;t.</p>

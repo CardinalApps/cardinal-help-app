@@ -1,8 +1,3 @@
-import { useSelector } from "react-redux"
-
-export default function Page({ children }) {  
-  const pages = useSelector((state) => state.pages)
-  console.log('pages from redux', pages)
-
+export default function Page({ children }) {
   return children
 }
