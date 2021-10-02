@@ -1,4 +1,4 @@
-# cardinal-website-next
+# cardinal-help-app
 
 The Help app for cardinalapps.xyz. This is a React app using Next.js that serves
 guides and documentation for Cardinal apps.
