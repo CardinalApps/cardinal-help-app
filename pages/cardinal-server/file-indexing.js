@@ -22,9 +22,9 @@ export default function Page() {
 
       <div className="text">
         <h1>File Indexing in Cardinal Server</h1>
-        <p>In all releases of Cardinal Server, file indexing is handled by the open source, purpose built <a href="https://github.com/somebeaver/cardinal-indexing-service" target="_blank">cardinal-indexing-service</a> library. This library is written in JavaScript and runs in Node.js environments.</p>
+        <p>In all releases of Cardinal Server, file indexing is handled by the open source, purpose built <a href="https://github.com/CardinalApps/cardinal-indexing-service" target="_blank">cardinal-indexing-service</a> library. This library is written in JavaScript and runs in Node.js environments.</p>
 
-        <p>For a technical overview of how file indexing works, the <a href="https://github.com/somebeaver/cardinal-indexing-service/blob/master/README.md" target="_blank">library's README file</a> is the place to start.</p>
+        <p>For a technical overview of how file indexing works, the <a href="https://github.com/CardinalApps/cardinal-indexing-service/blob/master/README.md" target="_blank">library's README file</a> is the place to start.</p>
 
         <h2>Indexing Files on the Desktop</h2>
         <p>To index files on macOS, Linux, or Windows, use the Cardinal Server app for desktop. For instructions on how to get started, see the <Link href="/cardinal-server/setup"><a>Setup Guide</a></Link>.</p>

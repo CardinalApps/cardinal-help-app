@@ -26,7 +26,7 @@ export default function Page() {
 
         <h4>To Be Free and Open Source</h4>
         <p>Cardinal apps are licensed under the <a href="https://www.gnu.org/licenses/quick-guide-gplv3.html" target="_blank" rel="nofollow">GPLv3 software license</a>. This is a strong copyleft license that works to the benefit of project contributors, protecting their time and effort from being exploited by another party.</p>
-        <p>All of the Cardinal source code is available on <a href="https://github.com/somebeaver" target="_blank">GitHub</a>.</p>
+        <p>All of the Cardinal source code is available on <a href="https://github.com/CardinalApps" target="_blank">GitHub</a>.</p>
 
         <h4>To Be as Platformless as Possible</h4>
         <p>Web technology is platformless, flexible, accessible, and without a corporation gatekeeping an app store. Cardinal apps embrace the web stack, and by designing for the web first, more code covers more platforms.</p>

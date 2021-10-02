@@ -1,0 +1,12 @@
+{
+  "icon": "fas fa-code",
+  "iconType": "font",
+  "priority": 100,
+  "sidebarMode": "reading",
+  "blockIconTitle": {
+    "en": "Getting Started"
+  },
+  "pageTitle": {
+    "en": "Getting started with contributing to Cardinal apps"
+  }
+}
