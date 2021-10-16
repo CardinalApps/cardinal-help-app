@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import HelpApp from '../components/HelpApp/HelpApp'
 import LayoutDoc from '../components/LayoutDoc/LayoutDoc'
 import cachedPages from '../cache/pages.json'
-import store from '../store/store'
+import storeFactory from '../store/store'
 
 // Global styles
 import '../styles/styles.scss'
@@ -14,6 +14,7 @@ function _app({ Component, pageProps }) {
   const router = useRouter()
   const [pages, setPages] = useState(cachedPages || [])
   const currentPage = pages.filter(page => page.route === router.pathname)[0]
+  const store = storeFactory()
 
   // console.log('Rendering HelpApp with pages {pages}, {currentPage}', pages, currentPage)
   

@@ -10,8 +10,11 @@ export default function Page() {
   const pages = useSelector((state) => state.pages)
   const [newPageName, setNewPageName] = useState('')
   const newPageInput = useRef(null)
-
-  console.log(pages)
+  
+  function fetchUser() {
+    console.log('Doing RXJS test')
+    dispatch({ type: 'FETCH_USER' })
+  }
 
   return (
     <div className="document">
@@ -50,8 +53,8 @@ export default function Page() {
         <h5>Introduction to Cardinal Server</h5>
         <h6>Introduction to Cardinal Server</h6>
 
-        <Button onClick={() => console.log('Clickaroni 1')}>
-          Example Button 1
+        <Button onClick={fetchUser}>
+          FETCH USER
         </Button>
         <Button onClick={() => console.log('Clickaroni 2')}>
           Example Button 2
